@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <title>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</title>
+    <style>
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f6f6f6;
+            color: #333;
+        }
+
+        button {
+            font-family: 'Noto Sans Thai', sans-serif;
+            color: #2980b9;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 10px 10px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 16px;
+            height: 160px;
+        }
+
+            .logo img {
+                max-width: 220px;
+            }
+
+        h1, h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            text-align: center;
+            color: #006699;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 6px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            text-align: right;
+        }
+
+            .value a {
+                text-decoration: none;
+                color: #2980b9;
+            }
+
+        .disclaimer {
+            font-size: 12px;
+            text-align: center;
+            padding: 20px 10px;
+            color: #aaa;
+        }
+
+            .disclaimer div {
+                margin: 5px 0px;
+            }
+
+        .expired {
+            color: red;
+            font-weight: bold;
+        }
+
+        .error {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            background: #1976d2;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" />
+        </div>
+
+        <div class="info" id="info-area01">
+            ...กำลังค้นหา...
+        </div>
+
+        <div class="info" id="info-area02">
+        </div>
+
+        <div class="disclaimer">
+            <div>โครงการเมโทรลักซ์ เกษตร</br>39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร กรุงเทพมหานคร 10900</div>
+            <div>Parking permit viewer v1.0</div>
+        </div>
+    </div>
+
+    <script>
+    const infoArea01 = document.getElementById('info-area01');
+    const infoArea02 = document.getElementById('info-area02');
+    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
+
+    const renderInfo = (label, value, specialClass = '',type=undefined) => {
+      if (value == undefined ) return "";
+
+      let display_value = value;
+      if(type == "phone") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
+
+      return `<div class="item">
+        <div class="label">${label}</div>
+        <div class="value ${specialClass}">${display_value}</div>
+      </div>`;
+    };
+
+    const showError = (msg) => {
+      infoArea01.innerHTML = `<div class="error">${msg}</div>`;
+    };
+
+    const getIdFromURL = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("id");
+    };
+
+    const render_info = (data,is_private = false) => {
+
+        var info_owner = data[0];
+        //-----
+        infoArea01.innerHTML = `
+          <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
+          ${renderInfo("รหัสสติกเกอร์", info_owner["permit-qr"])}
+          ${renderInfo("ห้องชุดเลขที่", info_owner["owner-unit"])}
+          ${renderInfo("ชื่อเจ้าของร่วม", info_owner["owner-name"])}
+          ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
+          ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH'), "expired")}
+          ${(is_private?"":`<button onclick="fetchDataPrivate()">ดูข้อมูลเพิ่มเติม</button>`) }
+        `;
+
+        infoArea02.innerHTML = "";
+        var vItems = "";
+        data.forEach(function(r,idx){
+          vItems +=  `
+            <h2>ยานพาหนะ ${idx+1}</h2>
+            ${renderInfo("ประเภท", r["vehicle-type"])}
+            ${renderInfo("เลขทะเบียน",  r["lp-no"])}
+            ${renderInfo("จังหวัด",  r["lp-province"])}
+          `;
+        });
+        infoArea02.innerHTML = vItems;
+
+    }
+
+    const fetchDataPublic = async(id) => {
+      try {
+        const response = await fetch(`${URL_API}`,{
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8"},
+          body: JSON.stringify({"action":"permit-public", "permit-qr":id })
+        });
+        const res = await response.json();
+
+        if (!res || !res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
+        if (!res || !res.status == "not-found"){  return; }
+
+        render_info(res.data);
+
+      } catch (e) {
+        showError("เกิดข้อผิดพลาดในการดึงข้อมูล");
+      }
+    }
+
+    const fetchDataPrivate = async() =>{
+      try {
+        const key = prompt("กรุณากรอกรหัสผ่าน:");
+        const id  = getIdFromURL();
+
+        if(key=="") return 0;
+        //-----
+        infoArea01.innerHTML = "...กำลังค้นหา...";
+        infoArea02.innerHTML = "";
+
+        const response = await fetch(`${URL_API}`,{
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({"action":"permit-private", "permit-qr":id, "user-key": key })
+        });
+        const res = await response.json();
+
+        if (!res || !res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
+
+        render_info(res.data,true);
+
+      } catch (e) {
+        showError("เกิดข้อผิดพลาดในการอ่านข้อมูล");
+      }
+    }
+
+    const id = getIdFromURL();
+    if (id) {
+      fetchDataPublic(id);
+    } else {
+      showError("ไม่พบ ID ใน URL");
+    }
+    </script>
+</body>
+</html>
