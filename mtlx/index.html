@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
-    <title>�����ż�����Է���ʹ�ҹ��˹�</title>
+    <title>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</title>
     <style>
         body {
             font-family: 'Noto Sans Thai', sans-serif;
@@ -129,14 +129,14 @@
         </div>
 
         <div class="info" id="info-area01">
-            ...���ѧ����...
+            ...กำลังค้นหา...
         </div>
 
         <div class="info" id="info-area02">
         </div>
 
         <div class="disclaimer">
-            <div>�ç��������ѡ�� �ɵ�</br>39 ���������԰��١Ԩ �ǧ�ʹҹԤ� ࢵ��بѡ� ��ا෾��ҹ�� 10900</div>
+            <div>โครงการเมโทรลักซ์ เกษตร</br>39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร กรุงเทพมหานคร 10900</div>
             <div>Parking permit viewer v1.0</div>
         </div>
     </div>
@@ -172,23 +172,23 @@
         var info_owner = data[0];
         //-----
         infoArea01.innerHTML = `
-          <h1>�����ż�����Է���ʹ�ҹ��˹�</h1>
-          ${renderInfo("����ʵԡ����", info_owner["permit-qr"])}
-          ${renderInfo("��ͧ�ش�Ţ���", info_owner["owner-unit"])}
-          ${renderInfo("������Ңͧ����", info_owner["owner-name"])}
-          ${renderInfo("�����Ţ���Ѿ��", info_owner["owner-phone"],"","phone")}
-          ${renderInfo("�ѹ�������", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH'), "expired")}
-          ${(is_private?"":`<button onclick="fetchDataPrivate()">�٢������������</button>`) }
+          <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
+          ${renderInfo("รหัสสติกเกอร์", info_owner["permit-qr"])}
+          ${renderInfo("ห้องชุดเลขที่", info_owner["owner-unit"])}
+          ${renderInfo("ชื่อเจ้าของร่วม", info_owner["owner-name"])}
+          ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
+          ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH'), "expired")}
+          ${(is_private?"":`<button onclick="fetchDataPrivate()">ดูข้อมูลเพิ่มเติม</button>`) }
         `;
 
         infoArea02.innerHTML = "";
         var vItems = "";
         data.forEach(function(r,idx){
           vItems +=  `
-            <h2>�ҹ��˹� ${idx+1}</h2>
-            ${renderInfo("������", r["vehicle-type"])}
-            ${renderInfo("�Ţ����¹",  r["lp-no"])}
-            ${renderInfo("�ѧ��Ѵ",  r["lp-province"])}
+            <h2>ยานพาหนะ ${idx+1}</h2>
+            ${renderInfo("ประเภท", r["vehicle-type"])}
+            ${renderInfo("เลขทะเบียน",  r["lp-no"])}
+            ${renderInfo("จังหวัด",  r["lp-province"])}
           `;
         });
         infoArea02.innerHTML = vItems;
@@ -204,24 +204,24 @@
         });
         const res = await response.json();
 
-        if (!res || !res.status == "fail") { showError("��辺����������Ѻʵԡ������"); return; }
+        if (!res || !res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
         if (!res || !res.status == "not-found"){  return; }
 
         render_info(res.data);
 
       } catch (e) {
-        showError("�Դ��ͼԴ��Ҵ㹡�ô֧������");
+        showError("เกิดข้อผิดพลาดในการดึงข้อมูล");
       }
     }
 
     const fetchDataPrivate = async() =>{
       try {
-        const key = prompt("��سҡ�͡���ʼ�ҹ:");
+        const key = prompt("กรุณากรอกรหัสผ่าน:");
         const id  = getIdFromURL();
 
         if(key=="") return 0;
         //-----
-        infoArea01.innerHTML = "...���ѧ����...";
+        infoArea01.innerHTML = "...กำลังค้นหา...";
         infoArea02.innerHTML = "";
 
         const response = await fetch(`${URL_API}`,{
@@ -231,12 +231,12 @@
         });
         const res = await response.json();
 
-        if (!res || !res.status == "fail") { showError("���͹حҵ������Ҷ֧������"); return; }
+        if (!res || !res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
 
         render_info(res.data,true);
 
       } catch (e) {
-        showError("�Դ��ͼԴ��Ҵ㹡����ҹ������");
+        showError("เกิดข้อผิดพลาดในการอ่านข้อมูล");
       }
     }
 
@@ -244,7 +244,7 @@
     if (id) {
       fetchDataPublic(id);
     } else {
-      showError("��辺 ID � URL");
+      showError("ไม่พบ ID ใน URL");
     }
     </script>
 </body>
