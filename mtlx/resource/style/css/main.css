@@ -110,9 +110,12 @@ button {
     background: #1976d2;
     color: white;
     border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
     font-size: 16px;
     cursor: pointer;
-    margin-top:15px !important;
+    margin-top: 15px;
+    width: 100%;
 }
 
 label {
@@ -120,9 +123,10 @@ label {
     margin-top: 10px;
 }
 
-button, input, select {
+input, select {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     width: 100%;
     padding: 12px;
     font-size: 16px;
