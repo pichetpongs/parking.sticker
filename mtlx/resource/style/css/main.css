@@ -1,0 +1,134 @@
+body {
+    font-family: 'Noto Sans Thai', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f6f6f6;
+    color: #333;
+}
+
+button {
+    font-family: 'Noto Sans Thai', sans-serif;
+    color: #2980b9;
+}
+
+.container {
+    max-width: 500px;
+    margin: 10px 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 16px;
+    height: 160px;
+}
+
+    .logo img {
+        max-width: 100%;
+        width:220px;
+    }
+
+h1, h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #006699;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 6px 0;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+}
+
+.value {
+    text-align: right;
+}
+
+    .value a {
+        text-decoration: none;
+        color: #2980b9;
+    }
+
+.disclaimer {
+    font-size: 12px;
+    text-align: center;
+    padding: 20px 10px;
+    color: #aaa;
+}
+
+    .disclaimer div {
+        margin: 5px 0px;
+    }
+
+.expired {
+    color: red;
+    font-weight: bold;
+}
+
+.error {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+button, input, select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+div#frm-regist{
+    display:none;
+}

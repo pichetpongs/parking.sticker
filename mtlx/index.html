@@ -4,135 +4,140 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resource/style/css/main.css" />
+    
     <title>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</title>
-    <style>
-        body {
-            font-family: 'Noto Sans Thai', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f6f6f6;
-            color: #333;
-        }
 
-        button {
-            font-family: 'Noto Sans Thai', sans-serif;
-            color: #2980b9;
-        }
 
-        .container {
-            max-width: 500px;
-            margin: 10px 10px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 16px;
-            height: 160px;
-        }
-
-            .logo img {
-                max-width: 220px;
-            }
-
-        h1, h2 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            text-align: center;
-            color: #006699;
-        }
-
-        h2 {
-            font-size: 18px;
-        }
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-align: center;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #eee;
-            padding: 6px 0;
-        }
-
-        .label {
-            font-weight: bold;
-            color: #555;
-        }
-
-        .value {
-            text-align: right;
-        }
-
-            .value a {
-                text-decoration: none;
-                color: #2980b9;
-            }
-
-        .disclaimer {
-            font-size: 12px;
-            text-align: center;
-            padding: 20px 10px;
-            color: #aaa;
-        }
-
-            .disclaimer div {
-                margin: 5px 0px;
-            }
-
-        .expired {
-            color: red;
-            font-weight: bold;
-        }
-
-        .error {
-            text-align: center;
-            color: red;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        button {
-            padding: 10px 16px;
-            border: none;
-            background: #1976d2;
-            color: white;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer
-        }
-    </style>
 </head>
-<body>
+<body >
     <div class="container">
         <div class="logo">
             <img src="resource/style/image/logo.png" />
         </div>
 
-        <div class="info" id="info-area01">
-            ...กำลังค้นหา...
-        </div>
+        <div class="info" id="info-area01">...กำลังค้นหา...</div>
+        <div class="info" id="info-area02"></div>
 
-        <div class="info" id="info-area02">
+        <div class="" id="frm-regist">
+            <h1>ลงทะเบียนสติกเกอร์ใหม่</h1>
+            <form method="post">
+                <label>
+                    เลขที่สติกเกอร์
+                    <input type="text" name="label-no" id="label-no" required >
+                    <input type="hidden" name="permit-qr" id="permit-qr" >
+                </label>
+                <label>
+                    ประเภทยานพาหนะ
+                    <select name="vehicle-type" id="vehicle-type" required>
+                        <option value="">-- เลือกประเภท --</option>
+                        <option value="รถยนต์">รถยนต์</option>
+                        <option value="จักรยานยนต์">จักรยานยนต์</option>
+                    </select>
+                </label>
+                <label>
+                    เลขทะเบียนรถยนต์
+                    <input type="text" name="lp-no" id="lp-no"  >
+                </label>
+                <label>
+                    จังหวัดทะเบียนรถ
+                    <select name="lp-province" id="lp-province" >
+                        <option value="">-- เลือกจังหวัด --</option>
+                        <option value="กระบี่">กระบี่</option>
+                        <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                        <option value="กาญจนบุรี">กาญจนบุรี</option>
+                        <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+                        <option value="กำแพงเพชร">กำแพงเพชร</option>
+                        <option value="ขอนแก่น">ขอนแก่น</option>
+                        <option value="จันทบุรี">จันทบุรี</option>
+                        <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+                        <option value="ชลบุรี">ชลบุรี</option>
+                        <option value="ชัยนาท">ชัยนาท</option>
+                        <option value="ชัยภูมิ">ชัยภูมิ</option>
+                        <option value="ชุมพร">ชุมพร</option>
+                        <option value="เชียงราย">เชียงราย</option>
+                        <option value="เชียงใหม่">เชียงใหม่</option>
+                        <option value="ตรัง">ตรัง</option>
+                        <option value="ตราด">ตราด</option>
+                        <option value="ตาก">ตาก</option>
+                        <option value="นครนายก">นครนายก</option>
+                        <option value="นครปฐม">นครปฐม</option>
+                        <option value="นครพนม">นครพนม</option>
+                        <option value="นครราชสีมา">นครราชสีมา</option>
+                        <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                        <option value="นครสวรรค์">นครสวรรค์</option>
+                        <option value="นนทบุรี">นนทบุรี</option>
+                        <option value="นราธิวาส">นราธิวาส</option>
+                        <option value="น่าน">น่าน</option>
+                        <option value="บึงกาฬ">บึงกาฬ</option>
+                        <option value="บุรีรัมย์">บุรีรัมย์</option>
+                        <option value="ปทุมธานี">ปทุมธานี</option>
+                        <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+                        <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+                        <option value="ปัตตานี">ปัตตานี</option>
+                        <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+                        <option value="พังงา">พังงา</option>
+                        <option value="พัทลุง">พัทลุง</option>
+                        <option value="พิจิตร">พิจิตร</option>
+                        <option value="พิษณุโลก">พิษณุโลก</option>
+                        <option value="เพชรบุรี">เพชรบุรี</option>
+                        <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+                        <option value="แพร่">แพร่</option>
+                        <option value="พะเยา">พะเยา</option>
+                        <option value="ภูเก็ต">ภูเก็ต</option>
+                        <option value="มหาสารคาม">มหาสารคาม</option>
+                        <option value="มุกดาหาร">มุกดาหาร</option>
+                        <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                        <option value="ยโสธร">ยโสธร</option>
+                        <option value="ยะลา">ยะลา</option>
+                        <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+                        <option value="ระนอง">ระนอง</option>
+                        <option value="ระยอง">ระยอง</option>
+                        <option value="ราชบุรี">ราชบุรี</option>
+                        <option value="ลพบุรี">ลพบุรี</option>
+                        <option value="ลำปาง">ลำปาง</option>
+                        <option value="ลำพูน">ลำพูน</option>
+                        <option value="เลย">เลย</option>
+                        <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+                        <option value="สกลนคร">สกลนคร</option>
+                        <option value="สงขลา">สงขลา</option>
+                        <option value="สตูล">สตูล</option>
+                        <option value="สมุทรปราการ">สมุทรปราการ</option>
+                        <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                        <option value="สมุทรสาคร">สมุทรสาคร</option>
+                        <option value="สระแก้ว">สระแก้ว</option>
+                        <option value="สระบุรี">สระบุรี</option>
+                        <option value="สิงห์บุรี">สิงห์บุรี</option>
+                        <option value="สุโขทัย">สุโขทัย</option>
+                        <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+                        <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                        <option value="สุรินทร์">สุรินทร์</option>
+                        <option value="หนองคาย">หนองคาย</option>
+                        <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+                        <option value="อ่างทอง">อ่างทอง</option>
+                        <option value="อุดรธานี">อุดรธานี</option>
+                        <option value="อุทัยธานี">อุทัยธานี</option>
+                        <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                        <option value="อุบลราชธานี">อุบลราชธานี</option>
+                        <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+                    </select>
+                </label>
+                <label>
+                    เลขที่ห้อง
+                    <input type="text" name="owner-unit" id="owner-unit" >
+                </label>
+                <label>
+                    ชื่อเจ้าของรถ
+                    <input type="text" name="owner-name" id="owner-name" >
+                </label>
+
+                <label>
+                    หมายเลขโทรศัพท์
+                    <input type="tel" name="owner-phone" id="owner-phone" pattern="0[0-9]{9}" >
+                </label>
+
+                <button type="submit">ส่งข้อมูล</button>
+            </form>
         </div>
 
         <div class="disclaimer">
@@ -141,111 +146,7 @@
         </div>
     </div>
 
-    <script>
-    const infoArea01 = document.getElementById('info-area01');
-    const infoArea02 = document.getElementById('info-area02');
-    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
-
-    const renderInfo = (label, value, specialClass = '',type=undefined) => {
-      if (value == undefined ) return "";
-
-      let display_value = value;
-      if(type == "phone") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
-
-      return `<div class="item">
-        <div class="label">${label}</div>
-        <div class="value ${specialClass}">${display_value}</div>
-      </div>`;
-    };
-
-    const showError = (msg) => {
-      infoArea01.innerHTML = `<div class="error">${msg}</div>`;
-    };
-
-    const getIdFromURL = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get("id");
-    };
-
-    const render_info = (data,is_private = false) => {
-
-        var info_owner = data[0];
-        //-----
-        infoArea01.innerHTML = `
-          <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
-          ${renderInfo("รหัสสติกเกอร์", info_owner["permit-qr"])}
-          ${renderInfo("ห้องชุดเลขที่", info_owner["owner-unit"])}
-          ${renderInfo("ชื่อเจ้าของร่วม", info_owner["owner-name"])}
-          ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
-          ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH'), "expired")}
-          ${(is_private?"":`<button onclick="fetchDataPrivate()">ดูข้อมูลเพิ่มเติม</button>`) }
-        `;
-
-        infoArea02.innerHTML = "";
-        var vItems = "";
-        data.forEach(function(r,idx){
-          vItems +=  `
-            <h2>ยานพาหนะ ${idx+1}</h2>
-            ${renderInfo("ประเภท", r["vehicle-type"])}
-            ${renderInfo("เลขทะเบียน",  r["lp-no"])}
-            ${renderInfo("จังหวัด",  r["lp-province"])}
-          `;
-        });
-        infoArea02.innerHTML = vItems;
-
-    }
-
-    const fetchDataPublic = async(id) => {
-      try {
-        const response = await fetch(`${URL_API}`,{
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8"},
-          body: JSON.stringify({"action":"permit-public", "permit-qr":id })
-        });
-        const res = await response.json();
-
-        if (!res || !res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
-        if (!res || !res.status == "not-found"){  return; }
-
-        render_info(res.data);
-
-      } catch (e) {
-        showError("เกิดข้อผิดพลาดในการดึงข้อมูล");
-      }
-    }
-
-    const fetchDataPrivate = async() =>{
-      try {
-        const key = prompt("กรุณากรอกรหัสผ่าน:");
-        const id  = getIdFromURL();
-
-        if(key=="") return 0;
-        //-----
-        infoArea01.innerHTML = "...กำลังค้นหา...";
-        infoArea02.innerHTML = "";
-
-        const response = await fetch(`${URL_API}`,{
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({"action":"permit-private", "permit-qr":id, "user-key": key })
-        });
-        const res = await response.json();
-
-        if (!res || !res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
-
-        render_info(res.data,true);
-
-      } catch (e) {
-        showError("เกิดข้อผิดพลาดในการอ่านข้อมูล");
-      }
-    }
-
-    const id = getIdFromURL();
-    if (id) {
-      fetchDataPublic(id);
-    } else {
-      showError("ไม่พบ ID ใน URL");
-    }
-    </script>
+    
+    <script src="resource/js/main.js"></script>
 </body>
 </html>
