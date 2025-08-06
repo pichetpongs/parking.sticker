@@ -78,7 +78,7 @@ h2 {
 }
 
     .disclaimer div {
-        margin: 5px 0px;
+        margin: 12px 0px;
     }
 
 .expired {
@@ -111,7 +111,8 @@ button {
     color: white;
     border-radius: 8px;
     font-size: 16px;
-    cursor: pointer
+    cursor: pointer;
+    margin-top:15px !important;
 }
 
 label {
