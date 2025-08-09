@@ -1,6 +1,8 @@
 
+const infoArea00 = document.getElementById('info-area00');
 const infoArea01 = document.getElementById('info-area01');
 const infoArea02 = document.getElementById('info-area02');
+const cautionArea = document.getElementById('caution-area');
 const frmRegist  = document.getElementById('frm-regist');
 
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
@@ -18,7 +20,7 @@ const renderInfo = (label, value, specialClass = '',type=undefined) => {
             </div>`;
 };
 
-const showError = (msg) => {  infoArea01.innerHTML = `<div class="error">${msg}</div>`; };
+const showError = (msg) => {  infoArea00.innerHTML = `<div class="error">${msg}</div>`; };
 
 const getParamFromURL = (name) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -26,6 +28,7 @@ const getParamFromURL = (name) => {
 };
 
 const render_form = (data)=>{
+    infoArea00.innerHTML = "";
     infoArea01.innerHTML = "";
     infoArea02.innerHTML = "";
 
@@ -68,18 +71,25 @@ const render_form = (data)=>{
 
 const render_info = (data,is_private = false) => {
 
-    frmRegist.style.display  = "none";
+    frmRegist.style.display    = "none";
+    cautionArea.style.display  = "none";
+
     var info_owner = data[0];
     //-----
 
     infoArea01.innerHTML = `
         <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
         ${renderInfo("รหัสคิวอาร์", info_owner["permit-qr"])}
-        ${renderInfo("รหัสสติกเกอร์", info_owner["label-no"])}
-        ${renderInfo("ห้องชุดเลขที่", info_owner["owner-unit"])}
-        ${renderInfo("ชื่อเจ้าของร่วม", info_owner["owner-name"])}
+        ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
+        ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
+        ${renderInfo("ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์ฯ", info_owner["owner-name"])}
         ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
-        ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH'), "expired")}
+        ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
+          weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
+          year: 'numeric',     // แสดงปีแบบ 4 หลัก
+          month: 'long',       // แสดงชื่อเดือน (กันยายน)
+          day: 'numeric'       // แสดงวันเป็นตัวเลข
+        }), "expired")}
         ${(is_private?"":`<button onclick="fetchDataPrivate()">ดูข้อมูลเพิ่มเติม</button>`) }
     `;
 
@@ -87,13 +97,16 @@ const render_info = (data,is_private = false) => {
     var vItems = "";
     data.forEach(function(r,idx){
         vItems +=  `
-        <h2>ยานพาหนะ ${idx+1}</h2>
+        <h2>รายละเอียดยานพาหนะ</h2>
         ${renderInfo("ประเภท", r["vehicle-type"])}
         ${renderInfo("เลขทะเบียน",  r["lp-no"])}
         ${renderInfo("จังหวัด",  r["lp-province"])}
         `;
     });
+
     infoArea02.innerHTML = vItems;
+
+    cautionArea.style.display  = "block";
 
 }
 
@@ -143,8 +156,9 @@ const fetchDataPrivate = async() =>{
 
         if(key=="") return 0;
         //-----
-        infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
-        infoArea02.innerHTML = "";
+        showError("...กำลังเข้าถึงข้อมูลส่วนบุคคล...");
+        //infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
+        //infoArea02.innerHTML = "";
 
         let ipAddr = await fetchIPAddr();
 
@@ -155,10 +169,11 @@ const fetchDataPrivate = async() =>{
         });
         const res = await response.json();
         
-        if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
+        if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res || res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
-
+        if (res && res.status == "fail") { showError("..ไม่อนุญาติให้เข้าถึงข้อมูล.."); return; }
+        
+        showError("");
         render_info(res.data,true);
 
     } catch (e) {
