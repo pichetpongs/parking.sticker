@@ -82,7 +82,7 @@ const render_info = (data,is_private = false) => {
         ${renderInfo("รหัสคิวอาร์", info_owner["permit-qr"])}
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
-        ${renderInfo("ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์ฯ", info_owner["owner-name"])}
+        ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
         ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
         ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
           weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
@@ -184,10 +184,12 @@ const fetchDataPrivate = async() =>{
 const pushDataRegist = async(formData) =>{
     try{
         
-        infoArea01.innerHTML = "...บันทึกรายการ รอสักครู่...";
+        infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
         
         let data = formData;
-        data["action"] = "permit-regist";
+        data["action"]      = "permit-regist";
+        data["ip-addr"]     = await fetchIPAddr();
+        data["user-agent"]  = navigator.userAgent
 
         const response = await fetch(`${URL_API}`, {
             method: 'POST',
