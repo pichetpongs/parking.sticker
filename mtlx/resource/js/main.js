@@ -162,7 +162,7 @@ const fetchDataPrivate = async() =>{
         render_info(res.data,true);
 
     } catch (e) {
-        showError(...เกิดข้อผิดพลาดในการดึงข้อมูล...);
+        showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
     }
 }
 
