@@ -120,8 +120,10 @@ const fetchDataPublic = async(code) => {
         
         const res = await response.json();
 
-        if (!res || !res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
-        if (!res || !res.status == ""){  }
+        if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
+        //-----
+        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
+        if (res &&  res.status == ""){  }
     
         if(!res.data.length) {  showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return;}
         if(!res.data[0]["is-regist"]) { render_form(res.data[0]); return 0;}
@@ -152,13 +154,15 @@ const fetchDataPrivate = async() =>{
             body: JSON.stringify({ "user-agent":navigator.userAgent,"ip-addr":ipAddr, "action":"permit-private", "permit-qr":qr, "user-key": key })
         });
         const res = await response.json();
-
-        if (!res || !res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
+        
+        if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
+        //-----
+        if (res || res.status == "fail") { showError("ไม่อนุญาติให้เข้าถึงข้อมูล"); return; }
 
         render_info(res.data,true);
 
     } catch (e) {
-        showError("เกิดข้อผิดพลาดในการอ่านข้อมูล");
+        showError(...เกิดข้อผิดพลาดในการดึงข้อมูล...);
     }
 }
 
