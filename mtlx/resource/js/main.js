@@ -97,15 +97,25 @@ const render_info = (data,is_private = false) => {
 
 }
 
+const fetchIPAddr = async() =>{
+    const response = await fetch("https://api.ipify.org?format=json");
+    const res = await response.json();
+
+    return res["ip"]?res["ip"]:undefined;
+
+}
+
 const fetchDataPublic = async(code) => {
     try {
-        infoArea01.innerHTML = "...กำลังค้นหา...";
+        infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
         infoArea02.innerHTML = "";
+        //-----
+        let ipAddr = await fetchIPAddr();
 
         const response = await fetch(`${URL_API}`,{
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8"},
-            body: JSON.stringify({"action":"permit-public", "permit-qr":code })
+            body: JSON.stringify({ "user-agent":navigator.userAgent, "ip-addr": ipAddr, "action":"permit-public", "permit-qr":code })
         });
         
         const res = await response.json();
@@ -131,13 +141,15 @@ const fetchDataPrivate = async() =>{
 
         if(key=="") return 0;
         //-----
-        infoArea01.innerHTML = "...กำลังค้นหา...";
+        infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
         infoArea02.innerHTML = "";
+
+        let ipAddr = await fetchIPAddr();
 
         const response = await fetch(`${URL_API}`,{
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({"action":"permit-private", "permit-qr":qr, "user-key": key })
+            body: JSON.stringify({ "user-agent":navigator.userAgent,"ip-addr":ipAddr, "action":"permit-private", "permit-qr":qr, "user-key": key })
         });
         const res = await response.json();
 
