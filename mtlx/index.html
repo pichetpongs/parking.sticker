@@ -40,11 +40,11 @@
                     <h2>ยานพาหนะ #1</h2>
                     <label>
                         เลขป้ายทะเบียน
-                        <input type="text" name="vehicle[0][lp-no]" id="lp-no-0">
+                        <input type="text" name="vehicles[0][lp-no]" id="lp-no-0">
                     </label>
                     <label>
                         จังหวัดจดทะเบียน
-                        <select name="vehicle[0][lp-province]" id="lp-province-0">
+                        <select name="vehicles[0][lp-province]" id="lp-province-0">
                             <option value="">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
                             <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
@@ -132,11 +132,11 @@
                     <h2>ยานพาหนะ #2</h2>
                     <label>
                         เลขป้ายทะเบียน
-                        <input type="text" name="vehicle[1][lp-no]" id="lp-no-1">
+                        <input type="text" name="vehicles[1][lp-no]" id="lp-no-1">
                     </label>
                     <label>
                         จังหวัดจดทะเบียน
-                        <select name="vehicle[1][lp-province]" id="lp-province-1">
+                        <select name="vehicles[1][lp-province]" id="lp-province-1">
                             <option value="">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
                             <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
@@ -238,13 +238,16 @@
             </form>
         </div>
 
-        <div class="footer caution" id="caution-area">
-            หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ กรุณาติดต่อสำนักงานนิติบุคคล
+        <div class="footer">
+
+        <div class="caution" id="caution-area">
+            หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ<br />กรุณาติดต่อสำนักงานนิติบุคคล
         </div>
 
-        <div class="footer disclaimer">
-            <div>โครงการเมโทรลักซ์ เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร กรุงเทพมหานคร 10900</div>
+        <div class="disclaimer">
+            <div>โครงการเมโทรลักซ์ เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
             <div>parking permit viewer<br />version 1.0</div>
+        </div>
         </div>
     </div>
 

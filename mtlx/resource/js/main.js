@@ -54,7 +54,23 @@ const render_form = (data)=>{
             const form = e.target;
             const formData = new FormData(form);
 
-            const data = Object.fromEntries(formData.entries()); // แปลง FormData เป็น Object
+            let data = formData.entries(); // แปลง FormData เป็น Object
+
+            for (let [key, val] of data) {
+                const match = key.match(/^vehicles\[(\d+)\]\[(.+)\]$/);
+                //-----
+                if (match) {
+                    const index = parseInt(match[1], 10);
+                    const field = match[2];
+                    if (!data["vehicles"]) { data["vehicles"] = []; }
+                    if (!data["vehicles"][index]) { data["vehicles"][index] = {}; }
+                    data["vehicles"][index][field] = val;
+                } else {
+                    data[key] = val;
+                }
+                
+            }
+
             pushDataRegist(data);
 
         });
@@ -77,8 +93,11 @@ const render_form = (data)=>{
     document.getElementById('lp-no-0').required = is_enable;
     document.getElementById('lp-province-0').required = is_enable;
     document.getElementById('owner-unit').required = is_enable;
+    document.getElementById('owner-unit').value = data["owner-unit"] || '';
     document.getElementById('owner-name').required = is_enable;
+    document.getElementById('owner-name').value = data["owner-name"] || '';
     document.getElementById('owner-phone').required = is_enable;
+    document.getElementById('owner-phone').value = data["owner-phone"] || '';
 
     frmRegist.style.display  = "block";
  
@@ -89,7 +108,7 @@ const render_info = (data,is_private = false) => {
     frmRegist.style.display    = "none";
     cautionArea.style.display  = "none";
 
-    var info_owner = data[0];
+    var info_owner = data;
     //-----
 
     infoArea01.innerHTML = `
@@ -111,17 +130,16 @@ const render_info = (data,is_private = false) => {
     infoArea02.innerHTML = "";
 
     var vItems = "";
-    data.forEach(function(r,idx){
+    data["vehicles"].forEach(function(r,idx){
         vItems +=  `
-        <h2>รายละเอียดยานพาหนะ</h2>
-        ${renderInfo("ประเภท", r["vehicle-type"])}
+        <h2>ยานพาหนะ #${idx + 1} </h2>
+        ${renderInfo("ประเภท", r["vehicle-type"] == "BIKE"?"จักรยานยนต์":"รถยนต์")}
         ${renderInfo("เลขทะเบียน",  r["lp-no"])}
-        ${renderInfo("จังหวัด",  r["lp-province"])}
+        ${renderInfo("จังหวัดจดทะเบียน",  r["lp-province"])}
         `;
     });
 
-    infoArea02.innerHTML = vItems;
-
+    infoArea02.innerHTML = vItems!="" ? vItems:"<h2>ไม่พบข้อมูลยานพาหนะที่ลงทะเบียน</h2>";
     cautionArea.style.display  = "block";
 
 }
@@ -154,8 +172,8 @@ const fetchDataPublic = async(code) => {
         if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); infoArea01.innerHTML = ""; return; }
         if (res &&  res.status == ""){  }
     
-        if(!res.data.length) {  showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return;}
-        if(!res.data[0]["is-regist"]) { render_form(res.data[0]); return 0;}
+        if(!res.data) {  showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return;}
+        if(!res.data["is-regist"]) { render_form(res.data); return 0;}
 
         render_info(res.data);
 
@@ -199,9 +217,11 @@ const fetchDataPrivate = async() =>{
 
 const pushDataRegist = async(formData) =>{
     try{
-        
+
+        showError("");
+
         infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
-        
+
         let data = formData;
         data["action"]      = "permit-regist";
         data["ip-addr"]     = await fetchIPAddr();
@@ -215,13 +235,13 @@ const pushDataRegist = async(formData) =>{
 
         const res = await response.json();
 
-        if (res && res.status == "fail") { showError("บันทึกข้อมูลไม่สำเร็จ"); return; }
-        if (res && res.status == "not-found") { showError(res.message); return; }
-        if (res && res.status == "conflict") {  showError(res.message); return; }
+        if (res && res.status == "fail")        { infoArea01.innerHTML = ""; showError("บันทึกข้อมูลไม่สำเร็จ"); return; }
+        if (res && res.status == "not-found")   { infoArea01.innerHTML = ""; showError(res.message); return; }
+        if (res && res.status == "conflict")    { infoArea01.innerHTML = ""; showError(res.message); return; }
                                       
         infoArea01.innerHTML = "...บันทึกสำเร็จ...";                    
         
-        render_info([res.data],true);
+        render_info(res.data,true);
 
 
     }catch(e){
