@@ -74,8 +74,8 @@ const render_form = (data)=>{
 
     document.getElementById('label-no').disabled = is_enable;
     document.getElementById('vehicle-type').disabled = is_enable;
-    document.getElementById('lp-no').required = is_enable;
-    document.getElementById('lp-province').required = is_enable;
+    document.getElementById('lp-no-0').required = is_enable;
+    document.getElementById('lp-province-0').required = is_enable;
     document.getElementById('owner-unit').required = is_enable;
     document.getElementById('owner-name').required = is_enable;
     document.getElementById('owner-phone').required = is_enable;
@@ -109,6 +109,7 @@ const render_info = (data,is_private = false) => {
     `;
 
     infoArea02.innerHTML = "";
+
     var vItems = "";
     data.forEach(function(r,idx){
         vItems +=  `

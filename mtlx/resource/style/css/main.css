@@ -7,12 +7,13 @@
 }
 body h1, body h2 {
   font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   text-align: center;
   color: #006699;
 }
 body h2 {
   font-size: 18px;
+  margin-top: 12px;
 }
 body button {
   font-family: "Noto Sans Thai", sans-serif;
@@ -50,21 +51,21 @@ body .card h2 {
 }
 body form label {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 body form input, body form select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   font-size: 16px;
-  margin-top: 5px;
+  margin-top: 2px;
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   position: relative;
-  opacity: 70%;
+  opacity: 80%;
   z-index: 5;
 }
 body div.logo {
@@ -123,14 +124,12 @@ body div#frm-regist div.field-vehicle h2 {
   z-index: 5;
 }
 body div#frm-regist div.field-vehicle label {
-  display: block;
-  x-index: 10;
   position: relative;
   z-index: 5;
 }
 body div#frm-regist div.field-vehicle div {
-  background-position: top right;
-  background-size: 40%;
+  background-position: top 8px right 12px;
+  background-size: 22%;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
