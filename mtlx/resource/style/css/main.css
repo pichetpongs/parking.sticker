@@ -130,7 +130,7 @@ body div#frm-regist div.field-vehicle label {
 }
 body div#frm-regist div.field-vehicle div {
   background-position: top right;
-  background-size: 45%;
+  background-size: 40%;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -139,6 +139,7 @@ body div#frm-regist div.field-vehicle div {
   left: 0px;
   opacity: 60%;
   z-index: 1;
+  border-radius: 20px;
 }
 body div#frm-regist.vehicle-type-car div.field-vehicle {
   display: block;
