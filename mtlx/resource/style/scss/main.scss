@@ -47,8 +47,7 @@ body{
         border-radius: 12px;
         padding: 16px;
         margin-top: 20px;
-        position:relative
-
+        position:relative;
         h2{
             margin-top:0px;
         }
@@ -75,8 +74,9 @@ body{
             border-radius: 8px;
             border: 1px solid #ccc;
             box-sizing: border-box;
-
-            opacity:60%
+            position:relative;
+            opacity:60%;
+            z-index:5 ;
         }
 
         
@@ -140,9 +140,16 @@ body{
         display:none;
         div.field-vehicle{
             display:none;
-
-            h2{text-align:left; margin:0px 0px;}
             position:relative;
+            
+            h2{text-align:left; margin:0px 0px; position:relative; z-index:5;}
+            
+            label{ 
+                display:block; 
+                x-index:10;
+                position:relative;
+                z-index:5
+            }
             div{
                 background-position:top right;
                 background-size:180px;
@@ -153,6 +160,7 @@ body{
                 top:0px;
                 left:0px;
                 opacity:60%;
+                z-index:1;
             }
 
             

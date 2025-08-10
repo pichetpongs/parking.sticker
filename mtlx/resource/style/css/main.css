@@ -43,8 +43,9 @@ body .card {
   border-radius: 12px;
   padding: 16px;
   margin-top: 20px;
+  position: relative;
 }
-body .card position:relative h2 {
+body .card h2 {
   margin-top: 0px;
 }
 body form label {
@@ -62,7 +63,9 @@ body form input, body form select {
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  position: relative;
   opacity: 60%;
+  z-index: 5;
 }
 body div.logo {
   text-align: center;
@@ -116,6 +119,14 @@ body div#frm-regist div.field-vehicle {
 body div#frm-regist div.field-vehicle h2 {
   text-align: left;
   margin: 0px 0px;
+  position: relative;
+  z-index: 5;
+}
+body div#frm-regist div.field-vehicle label {
+  display: block;
+  x-index: 10;
+  position: relative;
+  z-index: 5;
 }
 body div#frm-regist div.field-vehicle div {
   background-position: top right;
@@ -127,6 +138,7 @@ body div#frm-regist div.field-vehicle div {
   top: 0px;
   left: 0px;
   opacity: 60%;
+  z-index: 1;
 }
 body div#frm-regist.vehicle-type-car div.field-vehicle {
   display: block;
