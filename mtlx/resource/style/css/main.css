@@ -64,7 +64,7 @@ body form input, body form select {
   border: 1px solid #ccc;
   box-sizing: border-box;
   position: relative;
-  opacity: 60%;
+  opacity: 70%;
   z-index: 5;
 }
 body div.logo {
