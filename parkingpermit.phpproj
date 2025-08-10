@@ -1,0 +1,16 @@
+<Project Sdk="Devsense.Php.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>4a8c237c-27a4-dee5-a7b1-7f21d0874b03</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="*.tmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="compilerconfig.json.defaults" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults" />
+  </ItemGroup>
+</Project>

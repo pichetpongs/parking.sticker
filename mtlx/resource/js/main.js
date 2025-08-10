@@ -32,10 +32,41 @@ const render_form = (data)=>{
     infoArea01.innerHTML = "";
     infoArea02.innerHTML = "";
 
-    document.getElementById('label-no').value = data["label-no"] || '';
-    document.getElementById('vehicle-type').value = data["vehicle-type"] || '';
-    document.getElementById('permit-qr').value = getParamFromURL("c");
+    document.getElementById('frm-regist').querySelector("#vehicle-type")
+        .addEventListener("change", function (e) {
+            let value = this.value;
+            let el = document.getElementById('frm-regist');
+            //-----
+            el.classList.remove("vehicle-type-");
+            el.classList.remove("vehicle-type-car");
+            el.classList.remove("vehicle-type-bike");
+            el.classList.add("vehicle-type-" + value.toLowerCase());
+        });
 
+    document.getElementById('frm-regist').getElementsByTagName("form")[0]
+        .addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            infoArea01.innerHTML = "...กำลังบันทึกข้อมูล...";
+            document.getElementById('label-no').disabled = false;
+            document.getElementById('vehicle-type').disabled = false;
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const data = Object.fromEntries(formData.entries()); // แปลง FormData เป็น Object
+            pushDataRegist(data);
+
+        });
+
+
+    document.getElementById('label-no').value = data["label-no"] || '';
+    //-----
+    document.getElementById('vehicle-type').value = data["vehicle-type"] || '';
+    document.getElementById('vehicle-type').dispatchEvent(new Event("change"));
+    //-----
+    document.getElementById('permit-qr').value = getParamFromURL("c");
+    //-----
     document.getElementById('vehicle-type').required = true;
     document.getElementById('label-no').required = true;
 
@@ -50,23 +81,7 @@ const render_form = (data)=>{
     document.getElementById('owner-phone').required = is_enable;
 
     frmRegist.style.display  = "block";
-
-    document.getElementById('frm-regist').getElementsByTagName("form") [0]
-        .addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            infoArea01.innerHTML = "...กำลังบันทึกข้อมูล...";
-            document.getElementById('label-no').disabled = false;
-            document.getElementById('vehicle-type').disabled = false;
-            
-            const form = e.target;
-            const formData = new FormData(form);
-                                        
-            const data = Object.fromEntries(formData.entries()); // แปลง FormData เป็น Object
-            pushDataRegist(data);
-
-
-        });
+ 
 }
 
 const render_info = (data,is_private = false) => {
@@ -135,7 +150,7 @@ const fetchDataPublic = async(code) => {
 
         if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
+        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); infoArea01.innerHTML = ""; return; }
         if (res &&  res.status == ""){  }
     
         if(!res.data.length) {  showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return;}

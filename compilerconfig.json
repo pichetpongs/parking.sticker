@@ -1,0 +1,7 @@
+﻿[
+    {
+        "outputFile": "mtlx/resource/style/css/main.css",
+        "inputFile": "mtlx/resource/style/scss/main.scss",
+        "minify": { "enabled": true }
+    }
+]
