@@ -101,7 +101,8 @@ const render_form = (data)=>{
     document.getElementById('owner-phone').value = data["owner-phone"] || '';
 
     frmRegist.style.display  = "block";
- 
+    container.classList.remove("loader");
+
 }
 
 const render_info = (data,is_private = false) => {
