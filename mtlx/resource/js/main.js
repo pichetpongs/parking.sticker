@@ -33,6 +33,12 @@ const getParamFromURL = (name) => {
     return urlParams.get(name);
 };
 
+const _getLocation = () => {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+}
+
 const render_form = (data)=>{
     infoArea00.innerHTML = "";
     infoArea01.innerHTML = "";
@@ -131,7 +137,7 @@ const render_info = (data,is_private = false) => {
           month: 'long',       // แสดงชื่อเดือน (กันยายน)
           day: 'numeric'       // แสดงวันเป็นตัวเลข
         }), "expired")}
-        ${(is_private?"":`<button onclick="fetchDataPrivate()">ดูข้อมูลเพิ่มเติม</button>`) }
+        ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดผู้ใช้สิทธิ์ฯเพิ่มเติม</button>`) }
     `;
 
     infoArea02.innerHTML = "";
@@ -172,11 +178,15 @@ const fetchDataPublic = async(code) => {
         _scorllTop();
 
         let ipAddr = await fetchIPAddr();
+        let pos = await _getLocation();
 
         const response = await fetch(`${URL_API}`,{
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8"},
-            body: JSON.stringify({ "user-agent":navigator.userAgent, "ip-addr": ipAddr, "action":"permit-public", "permit-qr":code })
+            body: JSON.stringify({
+                "user-agent": navigator.userAgent, "ip-addr": ipAddr, "location": { "lat": pos.coords.latitude, "lng" : pos.coords.longitude },
+                "action": "permit-public", "permit-qr": code
+            })
         });
         
         const res = await response.json();

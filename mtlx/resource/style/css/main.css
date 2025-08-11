@@ -3,13 +3,13 @@
   margin: 0;
   padding: 0;
   background: #f6f6f6;
-  color: #333;
+  color: #2c3e50;
 }
 body h1, body h2 {
   font-size: 20px;
   margin-bottom: 8px;
   text-align: center;
-  color: #006699;
+  color: #2980b9;
 }
 body h2 {
   font-size: 18px;
@@ -18,17 +18,20 @@ body h2 {
 body button {
   font-family: "Noto Sans Thai", sans-serif;
   color: #2980b9;
-  padding: 10px 16px;
+  padding: 8px 8px;
   border: none;
-  background: #1976d2;
+  background-color: #1976d2;
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  border: 0px solid #ccc;
+  font-size: 18px;
   cursor: pointer;
   margin-top: 15px;
   width: 100%;
+}
+body button:hover {
+  background-color: rgb(32.0425531915, 130.7808510638, 228.4574468085);
 }
 
 body #container {
@@ -101,20 +104,28 @@ body div.info div.item {
   justify-content: space-between;
   border-bottom: 1px solid #eee;
   padding: 6px 0;
+  padding-left: 5px;
+  height: 30px;
+  line-height: 30px;
 }
 body div.info div.item .label {
   font-weight: bold;
   color: #555;
+  line-height: inherit;
 }
 body div.info div.item .value {
   text-align: right;
+  line-height: inherit;
+  padding: 2px 7px;
 }
 body div.info div.item .value a {
   text-decoration: none;
   color: #2980b9;
 }
 body div.info div.item .value.expired {
-  color: #e74c3c;
+  color: #C09B4D;
+  border-radius: 6px;
+  background-color: #fffaf0;
   font-weight: bold;
 }
 body div#frm-regist {
@@ -176,9 +187,7 @@ body div.footer div.caution {
   display: none;
   margin-top: 20px;
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  color: #e74c3c;
+  font-size: 15px;
   padding: 10px 0px;
 }
 body div.footer div.disclaimer {
