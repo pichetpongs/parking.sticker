@@ -33,7 +33,7 @@
 
 body{
 
-    .container {
+    #container {
         max-width: 500px;
         margin: 10px 10px;
         padding: 20px;
@@ -43,6 +43,13 @@ body{
         min-height:300px;
         position:relative;
         padding-bottom: 250px;
+
+        &.loader{
+            background-image:url('../image/loader.png');
+            background-position: top 10px right 10px;
+            background-repeat:no-repeat;
+            //background-size: 32px;
+        }
     }
 
     .card {

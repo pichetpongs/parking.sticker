@@ -3,6 +3,7 @@ const infoArea00 = document.getElementById('info-area00');
 const infoArea01 = document.getElementById('info-area01');
 const infoArea02 = document.getElementById('info-area02');
 const cautionArea = document.getElementById('caution-area');
+const container  = document.getElementById('container');
 const frmRegist  = document.getElementById('frm-regist');
 
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
@@ -156,6 +157,8 @@ const fetchDataPublic = async(code) => {
     try {
         infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
         infoArea02.innerHTML = "";
+
+        container.classList.add("loader");
         //-----
         let ipAddr = await fetchIPAddr();
 
@@ -176,9 +179,9 @@ const fetchDataPublic = async(code) => {
         if(!res.data["is-regist"]) { render_form(res.data); return 0;}
 
         render_info(res.data);
-
+        container.classList.remove("loader");
     } catch (e) {
-        
+        container.classList.remove("loader");
         showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
     }
 }
@@ -188,7 +191,9 @@ const fetchDataPrivate = async() =>{
         const key = prompt("กรุณากรอกรหัสผ่าน:");
         const qr  = getParamFromURL("c");
 
-        if(key=="") return 0;
+        container.classList.add("loader");
+
+        if(key=="" || !key) return 0;
         //-----
         showError("...กำลังเข้าถึงข้อมูลส่วนบุคคล...");
         //infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
@@ -209,8 +214,9 @@ const fetchDataPrivate = async() =>{
         
         showError("");
         render_info(res.data,true);
-
+        container.classList.remove("loader");
     } catch (e) {
+        container.classList.remove("loader");
         showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
     }
 }
@@ -218,8 +224,12 @@ const fetchDataPrivate = async() =>{
 const pushDataRegist = async(formData) =>{
     try{
 
-        showError("");
+        container.classList.add("loader");
 
+        window.scrollTo({ top: 0, behavior: 'smooth'});
+
+        showError("");
+            
         infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
 
         let data = formData;
@@ -242,10 +252,10 @@ const pushDataRegist = async(formData) =>{
         infoArea01.innerHTML = "...บันทึกสำเร็จ...";                    
         
         render_info(res.data,true);
-
+        container.classList.remove("loader");
 
     }catch(e){
-
+        container.classList.remove("loader");
         showError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
     }
 }
