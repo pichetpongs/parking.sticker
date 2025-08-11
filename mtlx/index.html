@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resource/style/css/main.min.css" />
-    
-    <title>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</title>
-
-
+    <title>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ - อาคารชุดเมโทรสักซ์ เกษตร</title>
 </head>
 <body >
     <div id="container">
@@ -16,19 +13,19 @@
             <img src="resource/style/image/logo.png" />
         </div>
         <div class="info" id="info-area00"></div>
-        <div class="info" id="info-area01"><h1>...กำลังค้นหา...</h1></div>
+        <div class="info" id="info-area01"></div>
         <div class="info" id="info-area02"></div>
 
-        <div class="vehicle-type-car" id="frm-regist">
+        <div class="" id="frm-regist">
             <h1>ลงทะเบียนสติกเกอร์ใหม่</h1>
             <form method="post">
+                <input type="hidden" name="permit-qr" id="permit-qr">
                 <label>
-                    ลำดับสติกเกอร์
-                    <input type="text" name="label-no" id="label-no" required>
-                    <input type="hidden" name="permit-qr" id="permit-qr">
+                    <span>ลำดับสติกเกอร์</span>
+                    <input type="text" name="label-no" id="label-no" required maxlength="8" >
                 </label>
                 <label>
-                    ประเภทยานพาหนะ
+                    <span>ประเภทยานพาหนะ</span>
                     <select name="vehicle-type" id="vehicle-type" required>
                         <option value="">-- เลือกประเภท --</option>
                         <option value="CAR">รถยนต์</option>
@@ -39,11 +36,11 @@
                     <div class="vehicle-type"></div>
                     <h2>ยานพาหนะ #1</h2>
                     <label>
-                        เลขป้ายทะเบียน
+                        <span>เลขป้ายทะเบียน</span>
                         <input type="text" name="vehicles[0][lp-no]" id="lp-no-0">
                     </label>
                     <label>
-                        จังหวัดจดทะเบียน
+                        <span>จังหวัดจดทะเบียน</span>
                         <select name="vehicles[0][lp-province]" id="lp-province-0">
                             <option value="">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
@@ -131,11 +128,11 @@
                     <div class="vehicle-type"></div>
                     <h2>ยานพาหนะ #2</h2>
                     <label>
-                        เลขป้ายทะเบียน
+                        <span>เลขป้ายทะเบียน</span>
                         <input type="text" name="vehicles[1][lp-no]" id="lp-no-1">
                     </label>
                     <label>
-                        จังหวัดจดทะเบียน
+                        <span>จังหวัดจดทะเบียน</span>
                         <select name="vehicles[1][lp-province]" id="lp-province-1">
                             <option value="">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
@@ -221,16 +218,16 @@
 
                 <h2>ข้อมูลเจ้าของร่วม/ผู้ใช้สิทธิ์</h2>
                 <label>
-                    เลขที่ห้องชุด
+                    <span>เลขที่ห้องชุด</span>
                     <input type="text" name="owner-unit" id="owner-unit">
                 </label>
                 <label>
-                    ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์
+                    <span>ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</span>
                     <input type="text" name="owner-name" id="owner-name">
                 </label>
 
                 <label>
-                    หมายเลขโทรศัพท์
+                    <span>หมายเลขโทรศัพท์</span>
                     <input type="tel" name="owner-phone" id="owner-phone" pattern="0[0-9]{9}">
                 </label>
 
@@ -240,14 +237,14 @@
 
         <div class="footer">
 
-        <div class="caution" id="caution-area">
-            หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ<br />กรุณาติดต่อสำนักงานนิติบุคคล
-        </div>
+            <div class="caution" id="caution-area">
+                หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ<br />กรุณาติดต่อสำนักงานนิติบุคคล
+            </div>
 
-        <div class="disclaimer">
-            <div>โครงการเมโทรลักซ์ เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
-            <div>parking permit viewer<br />version 1.0</div>
-        </div>
+            <div class="disclaimer">
+                <div>นิติบุคคลอาคารชุดเมโทรลักซ์-เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
+                <div>Parking Permit Viewer (version 1.0)</div>
+            </div>
         </div>
     </div>
 

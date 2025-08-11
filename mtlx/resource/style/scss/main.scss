@@ -40,15 +40,14 @@ body{
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        min-height:300px;
+        min-height:400px;
         position:relative;
-        padding-bottom: 250px;
+        padding-bottom: 230px;
 
         &.loader{
             background-image:url('../image/loader.png');
             background-position: top 10px right 10px;
             background-repeat:no-repeat;
-            //background-size: 32px;
         }
     }
 
@@ -111,7 +110,7 @@ body{
 
         div.error {
             text-align: center;
-            color: red;
+            color: #e74c3c;
             font-weight: bold;
             margin-top: 20px;
         }
@@ -195,32 +194,31 @@ body{
         }
     }
     
-
-
     div.footer{
 
         position:absolute;
         bottom: 10px;
         left: 0px;
-        width:100% ;
+        right:0px;
+        padding: 0px 10px;
 
         div.caution {
             display:none;
             margin-top: 20px;
             text-align: center;
             font-size: 14px;
+            font-weight:bold;
             color: #e74c3c;
+            padding:10px 0px;
         }
         div.disclaimer {
-            font-size: 13px;
             text-align: center;
-            padding: 10px 10px;
-            color: #aaa;
+            padding: 5px 10px;
+            color: #95a5a6;
+            font-size: 14px;
 
-            div {
-                font-size: 12px;
-                margin: 12px 0px;
-            }
+            div {margin: 12px 0px;}
+            div:nth-child(2) { font-size: 13px; }
         }
 
     }

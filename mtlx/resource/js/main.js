@@ -21,10 +21,12 @@ const renderInfo = (label, value, specialClass = '',type=undefined) => {
             </div>`;
 };
 
-const showError = (msg) => {
+const showError = (msg = "") => {
     infoArea00.innerHTML = `<div class="error">${msg}</div>`;
     container.classList.remove("loader");
 };
+
+const _scorllTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 const getParamFromURL = (name) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -145,7 +147,9 @@ const render_info = (data,is_private = false) => {
     });
 
     infoArea02.innerHTML = vItems!="" ? vItems:"<h2>ไม่พบข้อมูลยานพาหนะที่ลงทะเบียน</h2>";
-    cautionArea.style.display  = "block";
+    cautionArea.style.display = "block";
+
+    showError();
 
 }
 
@@ -159,11 +163,14 @@ const fetchIPAddr = async() =>{
 
 const fetchDataPublic = async(code) => {
     try {
-        infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
+        showError("<h1>... กำลังค้นหา ...</h1>");
+        infoArea01.innerHTML = "";
         infoArea02.innerHTML = "";
 
         container.classList.add("loader");
         //-----
+        _scorllTop();
+
         let ipAddr = await fetchIPAddr();
 
         const response = await fetch(`${URL_API}`,{
@@ -176,10 +183,10 @@ const fetchDataPublic = async(code) => {
 
         if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); infoArea01.innerHTML = ""; return; }
+        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
         if (res &&  res.status == ""){  }
     
-        if(!res.data) {  showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return;}
+        if (!res.data) { showError("...รหัสคิวอาร์นี้ไม่มีในระบบ...");  return;}
         if(!res.data["is-regist"]) { render_form(res.data); return 0;}
 
         render_info(res.data);
@@ -195,13 +202,12 @@ const fetchDataPrivate = async() =>{
         const key = prompt("กรุณากรอกรหัสผ่าน:");
         const qr  = getParamFromURL("c");
 
-        container.classList.add("loader");
-
         if(key=="" || !key) return 0;
         //-----
+        _scorllTop();
+        //-----
         showError("...กำลังเข้าถึงข้อมูลส่วนบุคคล...");
-        //infoArea01.innerHTML = "<h1>... กำลังค้นหา ...</h1>";
-        //infoArea02.innerHTML = "";
+        container.classList.add("loader");
 
         let ipAddr = await fetchIPAddr();
 
@@ -214,13 +220,13 @@ const fetchDataPrivate = async() =>{
         
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showError("..ไม่อนุญาติให้เข้าถึงข้อมูล.."); return; }
+        if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึงข้อมูล/รหัสผ่านผิด ..."); return; }
         
         showError("");
         render_info(res.data,true);
-        container.classList.remove("loader");
+        
+
     } catch (e) {
-        container.classList.remove("loader");
         showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
     }
 }
@@ -228,11 +234,12 @@ const fetchDataPrivate = async() =>{
 const pushDataRegist = async(formData) =>{
     try{
 
-        showError("");
+        showError("...กำลังบันทึกรายการ รอสักครู่...");
         container.classList.add("loader");
-        infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
+        //infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
         //-----
-        window.scrollTo({ top: 0, behavior: 'smooth'});
+
+        _scorllTop();
  
         let data = formData;
         data["action"]      = "permit-regist";
