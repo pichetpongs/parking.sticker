@@ -21,7 +21,10 @@ const renderInfo = (label, value, specialClass = '',type=undefined) => {
             </div>`;
 };
 
-const showError = (msg) => {  infoArea00.innerHTML = `<div class="error">${msg}</div>`; };
+const showError = (msg) => {
+    infoArea00.innerHTML = `<div class="error">${msg}</div>`;
+    container.classList.remove("loader");
+};
 
 const getParamFromURL = (name) => {
     const urlParams = new URLSearchParams(window.location.search);
