@@ -228,14 +228,12 @@ const fetchDataPrivate = async() =>{
 const pushDataRegist = async(formData) =>{
     try{
 
-        container.classList.add("loader");
-
-        window.scrollTo({ top: 0, behavior: 'smooth'});
-
         showError("");
-            
+        container.classList.add("loader");
         infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
-
+        //-----
+        window.scrollTo({ top: 0, behavior: 'smooth'});
+ 
         let data = formData;
         data["action"]      = "permit-regist";
         data["ip-addr"]     = await fetchIPAddr();
