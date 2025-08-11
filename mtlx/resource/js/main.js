@@ -59,7 +59,8 @@ const render_form = (data)=>{
         .addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            infoArea01.innerHTML = "...กำลังบันทึกข้อมูล...";
+            showError("...กำลังบันทึกรายการ โปรดรอ...");
+
             document.getElementById('label-no').disabled = false;
             document.getElementById('vehicle-type').disabled = false;
 
@@ -169,6 +170,8 @@ const fetchIPAddr = async() =>{
 
 const fetchDataPublic = async(code) => {
     try {
+        if (container.classList.contains("loader")) return 0;
+
         showError("<h1>... กำลังค้นหา ...</h1>");
         infoArea01.innerHTML = "";
         infoArea02.innerHTML = "";
@@ -178,13 +181,13 @@ const fetchDataPublic = async(code) => {
         _scorllTop();
 
         let ipAddr = await fetchIPAddr();
-        let pos = await _getLocation();
+        //let pos = await _getLocation();
 
         const response = await fetch(`${URL_API}`,{
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8"},
             body: JSON.stringify({
-                "user-agent": navigator.userAgent, "ip-addr": ipAddr, "location": { "lat": pos.coords.latitude, "lng" : pos.coords.longitude },
+                "user-agent": navigator.userAgent, "ip-addr": ipAddr,
                 "action": "permit-public", "permit-qr": code
             })
         });
@@ -209,6 +212,9 @@ const fetchDataPublic = async(code) => {
 
 const fetchDataPrivate = async() =>{
     try {
+
+        if (container.classList.contains("loader")) return 0;
+
         const key = prompt("กรุณากรอกรหัสผ่าน:");
         const qr  = getParamFromURL("c");
 
@@ -216,7 +222,7 @@ const fetchDataPrivate = async() =>{
         //-----
         _scorllTop();
         //-----
-        showError("...กำลังเข้าถึงข้อมูลส่วนบุคคล...");
+        showError("...กำลังเข้าถึงข้อมูล...");
         container.classList.add("loader");
 
         let ipAddr = await fetchIPAddr();
@@ -230,7 +236,7 @@ const fetchDataPrivate = async() =>{
         
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึงข้อมูล/รหัสผ่านผิด ..."); return; }
+        if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึง/รหัสผ่านผิด ..."); return; }
         
         showError("");
         render_info(res.data,true);
@@ -244,7 +250,7 @@ const fetchDataPrivate = async() =>{
 const pushDataRegist = async(formData) =>{
     try{
 
-        showError("...กำลังบันทึกรายการ รอสักครู่...");
+       
         container.classList.add("loader");
         //infoArea01.innerHTML = "...กำลังบันทึกรายการ รอสักครู่...";
         //-----
@@ -264,18 +270,18 @@ const pushDataRegist = async(formData) =>{
 
         const res = await response.json();
 
-        if (res && res.status == "fail")        { infoArea01.innerHTML = ""; showError("บันทึกข้อมูลไม่สำเร็จ"); return; }
-        if (res && res.status == "not-found")   { infoArea01.innerHTML = ""; showError(res.message); return; }
-        if (res && res.status == "conflict")    { infoArea01.innerHTML = ""; showError(res.message); return; }
-                                      
-        infoArea01.innerHTML = "...บันทึกสำเร็จ...";                    
+        if (res && res.status == "fail")        { infoArea01.innerHTML = ""; showError("...บันทึกข้อมูลไม่สำเร็จ..."); return; }
+        if (res && res.status == "not-found")   { infoArea01.innerHTML = ""; showError(`...${res.message}...`); return; }
+        if (res && res.status == "conflict")    { infoArea01.innerHTML = ""; showError(`...${res.message}...`); return; }
+
+        showError("...บันทึกสำเร็จ...");                 
         
         render_info(res.data,true);
         container.classList.remove("loader");
 
     }catch(e){
         container.classList.remove("loader");
-        showError("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        showError("...เกิดข้อผิดพลาด กรุณาบันทึกใหม่อีกครั้ง...");
     }
 }
 
