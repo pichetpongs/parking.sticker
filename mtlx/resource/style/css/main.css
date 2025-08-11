@@ -68,6 +68,7 @@ body form label {
 body form input, body form select {
   -webkit-appearance: none;
   -moz-appearance: none;
+  font-family: inherit;
   appearance: none;
   width: 100%;
   padding: 10px;
@@ -79,6 +80,10 @@ body form input, body form select {
   position: relative;
   opacity: 80%;
   z-index: 5;
+}
+body form input:focus-visible, body form input:focus, body form select:focus-visible, body form select:focus {
+  border: 1px solid #C09B4D;
+  outline: 2px solid #C09B4D;
 }
 body div.logo {
   text-align: center;

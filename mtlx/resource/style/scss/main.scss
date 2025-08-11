@@ -80,6 +80,8 @@ body{
             -webkit-appearance: none;
             -moz-appearance: none;
 
+            font-family:inherit;
+
             appearance: none;
             width: 100%;
             padding: 10px;
@@ -91,6 +93,11 @@ body{
             position:relative;
             opacity:80%;
             z-index:5 ;
+
+            &:focus-visible,&:focus{
+                border: 1px solid #C09B4D;
+                outline: 2px solid #C09B4D;
+            }
         }
 
         
