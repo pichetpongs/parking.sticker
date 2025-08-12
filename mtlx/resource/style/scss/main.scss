@@ -15,7 +15,7 @@
 
     h2{ font-size: 18px; margin-top:20px; margin-bottom:0px; }
 
-    button{
+    button,.button{
         font-family: 'Noto Sans Thai', sans-serif;
         color: #2980b9;
         padding: 8px 8px;
@@ -145,15 +145,32 @@ body{
             .value {
                 text-align: right;
                 line-height:inherit;
-                padding:2px 7px;
+                padding:0px 7px;
+                border-radius:6px;
                 a {
                     text-decoration: none;
-                    color: #2980b9;
+                    color: #fff;
+                }
+
+                &.phone{
+                    a{
+                        padding-left:30px;
+                        background-image :url('../image/ico-phone.png');
+                        background-repeat:no-repeat;
+                        background-size:24px;
+                        background-position:0px 50%;
+
+                        
+                    }
+
+                    background-color: #1976d2;
+                    &:hover{
+                        background-color: lighten(#1976d2,5%);
+                    }
                 }
 
                 &.expired {
                     color: #C09B4D;
-                    border-radius:6px;
                     background-color: #fffaf0;
                     font-weight: bold;
                 }

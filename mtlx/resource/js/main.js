@@ -13,7 +13,7 @@ const renderInfo = (label, value, specialClass = '',type=undefined) => {
     if (value == undefined ) return "";
 
     let display_value = value;
-    if(type == "phone") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
+    if(type == "a") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
 
     return `<div class="item">
             <div class="label">${label}</div>
@@ -131,7 +131,7 @@ const render_info = (data,is_private = false) => {
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
-        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone")}
+        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"phone","a")}
         ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
           weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
           year: 'numeric',     // แสดงปีแบบ 4 หลัก
