@@ -155,7 +155,7 @@ body div.info div.item.remark {
 body div.info div.item.remark .value {
   text-align: left;
   white-space: pre-line;
-  max-height: 250px;
+  max-height: 220px;
   overflow: scroll;
 }
 body div#frm-regist {
