@@ -154,6 +154,7 @@ body div.info div.item.remark {
 }
 body div.info div.item.remark .value {
   text-align: left;
+  white-space: pre-line;
 }
 body div#frm-regist {
   display: none;
