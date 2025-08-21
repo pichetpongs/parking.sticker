@@ -95,7 +95,6 @@ body div.logo img {
   width: 220px;
 }
 body div.info {
-  flex-direction: column;
   gap: 10px;
   text-align: center;
 }
@@ -146,6 +145,15 @@ body div.info div.item .value.expired {
   color: #C09B4D;
   background-color: #fffaf0;
   font-weight: bold;
+}
+body div.info div.item.remark {
+  text-align: left;
+  height: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+body div.info div.item.remark .value {
+  text-align: left;
 }
 body div#frm-regist {
   display: none;

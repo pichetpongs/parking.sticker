@@ -9,15 +9,15 @@ const frmRegist  = document.getElementById('frm-regist');
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
 
-const renderInfo = (label, value, specialClass = '',type=undefined) => {
+const renderInfo = (label, value, itemClass , valueClass = '',type=undefined) => {
     if (value == undefined ) return "";
 
     let display_value = value;
     if(type == "a") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
 
-    return `<div class="item">
+    return `<div class="item ${itemClass}">
             <div class="label">${label}</div>
-            <div class="value ${specialClass}">${display_value}</div>
+            <div class="value ${valueClass}">${display_value}</div>
             </div>`;
 };
 
@@ -131,13 +131,15 @@ const render_info = (data,is_private = false) => {
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
-        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"phone","a")}
+        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone","a")}
         ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
           weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
           year: 'numeric',     // แสดงปีแบบ 4 หลัก
           month: 'long',       // แสดงชื่อเดือน (กันยายน)
           day: 'numeric'       // แสดงวันเป็นตัวเลข
         }), "expired")}
+        ${renderInfo("หมายเหตุ", info_owner["remark"],"remark")}
+
         ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดผู้ใช้สิทธิ์ฯเพิ่มเติม</button>`) }
     `;
 

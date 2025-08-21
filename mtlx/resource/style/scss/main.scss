@@ -115,8 +115,7 @@ body{
     }
     
     div.info{
-        //display: flex;
-        flex-direction: column;
+        
         gap: 10px;
         text-align: center;
 
@@ -175,6 +174,16 @@ body{
                     font-weight: bold;
                 }
 
+            }
+
+            &.remark{   
+                text-align:left;
+                height:auto;          
+                flex-direction: column;   
+                justify-content: flex-start;
+                .value{
+                    text-align:left;
+                }
             }
         }
 
