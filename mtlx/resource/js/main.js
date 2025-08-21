@@ -9,7 +9,7 @@ const frmRegist  = document.getElementById('frm-regist');
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
 
-const renderInfo = (label, value, itemClass , valueClass = '',type=undefined) => {
+const renderInfo = (label, value, itemClass="" , valueClass = '',type=undefined) => {
     if (value == undefined ) return "";
 
     let display_value = value;
@@ -137,7 +137,7 @@ const render_info = (data,is_private = false) => {
           year: 'numeric',     // แสดงปีแบบ 4 หลัก
           month: 'long',       // แสดงชื่อเดือน (กันยายน)
           day: 'numeric'       // แสดงวันเป็นตัวเลข
-        }), "expired")}
+        }),"", "expired")}
         ${renderInfo("หมายเหตุ", info_owner["remark"],"remark")}
 
         ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดผู้ใช้สิทธิ์ฯเพิ่มเติม</button>`) }
