@@ -155,7 +155,7 @@ body div.info div.item.remark {
 body div.info div.item.remark .value {
   text-align: left;
   white-space: pre-line;
-  max-height: 220px;
+  max-height: 180px;
   overflow: scroll;
 }
 body div#frm-regist {
@@ -177,14 +177,14 @@ body div#frm-regist div.field-vehicle label {
 }
 body div#frm-regist div.field-vehicle div {
   background-position: top 8px right 12px;
-  background-size: 20%;
+  background-size: 80px;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
-  opacity: 60%;
+  opacity: 90%;
   z-index: 1;
   border-radius: 20px;
 }
@@ -192,10 +192,10 @@ body div#frm-regist.vehicle-type-car div.field-vehicle {
   display: block;
 }
 body div#frm-regist.vehicle-type-car div.field-vehicle div {
-  background-image: url("../image/vehicle-type-car1.png");
+  background-image: url("../image/vehicle-type-car01.png");
 }
 body div#frm-regist.vehicle-type-car div.field-vehicle:nth-of-type(2) div {
-  background-image: url("../image/vehicle-type-car.second.png");
+  background-image: url("../image/vehicle-type-car02.png");
 }
 body div#frm-regist.vehicle-type-bike div.field-vehicle {
   display: block;
@@ -204,7 +204,7 @@ body div#frm-regist.vehicle-type-bike div.field-vehicle:nth-of-type(2) {
   display: none;
 }
 body div#frm-regist.vehicle-type-bike div.field-vehicle div {
-  background-image: url("../image/vehicle-type-bike1.png");
+  background-image: url("../image/vehicle-type-bike01.png");
 }
 body div.footer {
   position: absolute;
