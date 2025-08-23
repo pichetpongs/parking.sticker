@@ -47,12 +47,16 @@ body{
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         min-height:400px;
         position:relative;
-        padding-bottom: 230px;
+        padding-bottom: 300px;
 
         &.loader{
             background-image:url('../image/loader.png');
             background-position: top 10px right 10px;
             background-repeat:no-repeat;
+        }
+
+        &.lost{
+            div#info-lost{ display:block;}   
         }
     }
 
@@ -188,8 +192,18 @@ body{
             }
         }
 
+        &#info-lost{
+            background-image:url('../image/info-lost.png');
+            background-position: top 10px center;
+            background-repeat:no-repeat;
+            background-size: 150px;
+            padding-top:170px;
+            display:none;
+
+        }
         
     }
+
 
 
     div#frm-regist{ 
@@ -242,12 +256,12 @@ body{
     }
     
     div.footer{
-
         position:absolute;
         bottom: 10px;
         left: 0px;
         right:0px;
         padding: 0px 10px;
+        text-align: center;
 
         div.caution {
             display:none;
@@ -263,9 +277,16 @@ body{
             padding: 5px 10px;
             color: #95a5a6;
             font-size: 14px;
-
-            div {margin: 12px 0px;}
-            div:nth-child(2) { font-size: 13px; }
+        }
+        div.notice{
+            text-align:center;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+        div.version{
+            color: #95a5a6;
+            margin: 12px 0px;
+           font-size: 13px;
         }
 
     }

@@ -16,13 +16,19 @@
         <div class="info" id="info-area01"></div>
         <div class="info" id="info-area02"></div>
 
+        <div class="info" id="info-lost">
+            <div class="error">
+                สติกเกอร์นี้ ถูกลงบันทึกประจำวันแล้วว่าสูญหาย การครอบครองหรือนำไปใช้งานต่อ จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที
+            </div>
+        </div>
+
         <div class="" id="frm-regist">
             <h1>ลงทะเบียนสติกเกอร์ใหม่</h1>
             <form method="post">
                 <input type="hidden" name="permit-qr" id="permit-qr">
                 <label>
                     <span>ลำดับสติกเกอร์</span>
-                    <input type="text" name="label-no" id="label-no" required maxlength="8" placeholder="2569/888" >
+                    <input type="text" name="label-no" id="label-no" required maxlength="8" placeholder="2569/888">
                 </label>
                 <label>
                     <span>ประเภทยานพาหนะ</span>
@@ -32,7 +38,7 @@
                         <option value="BIKE">รถจักรยานยนต์</option>
                     </select>
                 </label>
-                <div class="card field-vehicle" id="field-vehicle01" >
+                <div class="card field-vehicle" id="field-vehicle01">
                     <div class="vehicle-type"></div>
                     <h2>ยานพาหนะ #1</h2>
                     <label>
@@ -231,6 +237,7 @@
                     <input type="tel" name="owner-phone" id="owner-phone" pattern="0[0-9]{9}" placeholder="0123456789">
                 </label>
 
+
                 <button type="submit">ลงทะเบียนสติกเกอร์</button>
             </form>
         </div>
@@ -243,8 +250,13 @@
 
             <div class="disclaimer">
                 <div>นิติบุคคลอาคารชุดเมโทรลักซ์-เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
-                <div>Parking Permit Viewer (version 1.0)</div>
+
             </div>
+            <div class="notice">
+                สติกเกอร์จอดรถเป็นทรัพย์สินของนิติบุคคลอาคารชุด ใช้เพื่อระบุตัวตนของผู้ได้รับสิทธิตามระเบียบนิติบุคคลเท่านั้น ผู้ครอบครองไม่มีสิทธิเป็นเจ้าของ ห้ามโอน ขาย หรือใช้ในวัตถุประสงค์อื่น นิติบุคคลขอสงวนสิทธิเรียกคืนหรือเพิกถอนการใช้ได้ทันที หากผู้ครอบครองสิ้นสิทธิหรือฝ่าฝืนข้อกำหนด
+            </div>
+
+            <div class="version"> Parking Permit Viewer (version 1.0)</div>
         </div>
     </div>
 

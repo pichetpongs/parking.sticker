@@ -9,9 +9,9 @@ const frmRegist  = document.getElementById('frm-regist');
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
 
-const renderInfo = (label, value, itemClass="" , valueClass = '',type=undefined) => {
-    if (value == undefined ) return "";
-
+const renderInfo = (label, value="", itemClass="" , valueClass = '',type=undefined) => {
+    if (value.trim() == "" ) return "";
+    //-----                                        
     let display_value = value;
     if(type == "a") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
 
@@ -22,7 +22,7 @@ const renderInfo = (label, value, itemClass="" , valueClass = '',type=undefined)
 };
 
 const showError = (msg = "") => {
-    infoArea00.innerHTML = `<div class="error">${msg}</div>`;
+    infoArea00.innerHTML = msg == ""?"":`<div class="error">${msg}</div>`;
     container.classList.remove("loader");
 };
 
@@ -131,7 +131,13 @@ const render_info = (data,is_private = false) => {
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
-        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"],"","phone","a")}
+        ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"], "", "phone", "a")}
+        ${renderInfo("วันลงทะเบียน", new Date(info_owner["datetime-regist"]).toLocaleDateString('th-TH', {
+            weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
+            year: 'numeric',     // แสดงปีแบบ 4 หลัก
+            month: 'long',       // แสดงชื่อเดือน (กันยายน)
+            day: 'numeric'       // แสดงวันเป็นตัวเลข
+        }), "", "")}
         ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
           weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
           year: 'numeric',     // แสดงปีแบบ 4 หลัก
@@ -174,6 +180,8 @@ const fetchDataPublic = async(code) => {
     try {
         if (container.classList.contains("loader")) return 0;
 
+        container.classList.remove("lost");
+
         showError("<h1>... กำลังค้นหา ...</h1>");
         infoArea01.innerHTML = "";
         infoArea02.innerHTML = "";
@@ -199,13 +207,20 @@ const fetchDataPublic = async(code) => {
         if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
         if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
-        if (res &&  res.status == ""){  }
+        if (res && res.status == ""){  }
     
-        if (!res.data) { showError("...รหัสคิวอาร์นี้ไม่มีในระบบ...");  return;}
-        if(!res.data["is-regist"]) { render_form(res.data); return 0;}
+        if (!res.data) { showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return; }
+        if (res.data["is-lost"]) {
+            showError("");
+            container.classList.add("lost");
+            container.classList.remove("loader");
+            return 0;
+        }
+        if (!res.data["is-regist"]) { render_form(res.data); return 0;}
 
         render_info(res.data);
         container.classList.remove("loader");
+
     } catch (e) {
         container.classList.remove("loader");
         showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
@@ -276,7 +291,7 @@ const pushDataRegist = async(formData) =>{
         if (res && res.status == "not-found")   { infoArea01.innerHTML = ""; showError(`...${res.message}...`); return; }
         if (res && res.status == "conflict")    { infoArea01.innerHTML = ""; showError(`...${res.message}...`); return; }
 
-        showError("...บันทึกสำเร็จ...");                 
+        showError("...ลงทะเบียนสำเร็จ...");                 
         
         render_info(res.data,true);
         container.classList.remove("loader");

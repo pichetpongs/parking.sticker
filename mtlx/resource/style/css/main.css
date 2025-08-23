@@ -44,12 +44,15 @@ body #container {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-height: 400px;
   position: relative;
-  padding-bottom: 230px;
+  padding-bottom: 300px;
 }
 body #container.loader {
   background-image: url("../image/loader.png");
   background-position: top 10px right 10px;
   background-repeat: no-repeat;
+}
+body #container.lost div#info-lost {
+  display: block;
 }
 body .card {
   border: 1px solid #ccc;
@@ -158,6 +161,14 @@ body div.info div.item.remark .value {
   max-height: 180px;
   overflow-y: scroll;
 }
+body div.info#info-lost {
+  background-image: url("../image/info-lost.png");
+  background-position: top 10px center;
+  background-repeat: no-repeat;
+  background-size: 150px;
+  padding-top: 170px;
+  display: none;
+}
 body div#frm-regist {
   display: none;
 }
@@ -212,6 +223,7 @@ body div.footer {
   left: 0px;
   right: 0px;
   padding: 0px 10px;
+  text-align: center;
 }
 body div.footer div.caution {
   display: none;
@@ -226,9 +238,13 @@ body div.footer div.disclaimer {
   color: #95a5a6;
   font-size: 14px;
 }
-body div.footer div.disclaimer div {
-  margin: 12px 0px;
+body div.footer div.notice {
+  text-align: center;
+  font-size: 12px;
+  color: #95a5a6;
 }
-body div.footer div.disclaimer div:nth-child(2) {
+body div.footer div.version {
+  color: #95a5a6;
+  margin: 12px 0px;
   font-size: 13px;
 }
