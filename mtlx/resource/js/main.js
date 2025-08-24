@@ -2,6 +2,7 @@
 const infoArea00 = document.getElementById('info-area00');
 const infoArea01 = document.getElementById('info-area01');
 const infoArea02 = document.getElementById('info-area02');
+const infoLost = document.getElementById('info-lost');
 const cautionArea = document.getElementById('caution-area');
 const container  = document.getElementById('container');
 const frmRegist  = document.getElementById('frm-regist');
@@ -25,6 +26,20 @@ const showError = (msg = "") => {
     infoArea00.innerHTML = msg == ""?"":`<div class="error">${msg}</div>`;
     container.classList.remove("loader");
 };
+
+const showLost = (data) => {
+    infoLost.innerHTML = infoLost.innerHTML + `
+    <br> สติกเกอร์หมายเลข ${data["label-no"]}
+    <br> วันที่แจ้งหาย ${new Date(data["datetime-update"]).toLocaleDateString('th-TH', {
+        weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
+        year: 'numeric',     // แสดงปีแบบ 4 หลัก
+        month: 'long',       // แสดงชื่อเดือน (กันยายน)
+        day: 'numeric'
+    })}
+    `;
+    container.classList.add("lost");
+    container.classList.remove("loader");
+}
 
 const _scorllTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
@@ -212,8 +227,7 @@ const fetchDataPublic = async(code) => {
         if (!res.data) { showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return; }
         if (res.data["is-lost"]) {
             showError("");
-            container.classList.add("lost");
-            container.classList.remove("loader");
+            showLost(res.data);
             return 0;
         }
         if (!res.data["is-regist"]) { render_form(res.data); return 0;}

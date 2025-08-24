@@ -18,14 +18,18 @@
 
         <div class="info" id="info-lost">
             <div class="error">
-                สติกเกอร์นี้ ถูกลงบันทึกประจำวันแล้วว่าสูญหาย การครอบครองหรือนำไปใช้งานต่อ จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที
+                สติกเกอร์นี้ถูกลงบันทึกประจำวันแล้วว่าสูญหาย <br />การครอบครองหรือนำไปใช้งานต่อ<br />จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล <br /> หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที 
             </div>
         </div>
 
         <div class="" id="frm-regist">
             <h1>ลงทะเบียนสติกเกอร์ใหม่</h1>
             <form method="post">
-                <input type="hidden" name="permit-qr" id="permit-qr">
+
+                <label>
+                    <span>รหัสคิวอาร์</span>
+                    <input type="text" name="permit-qr" id="permit-qr" disabled>
+                </label>
                 <label>
                     <span>ลำดับสติกเกอร์</span>
                     <input type="text" name="label-no" id="label-no" required maxlength="8" placeholder="2569/888">
