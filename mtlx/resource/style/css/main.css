@@ -54,6 +54,9 @@ body #container.loader {
 body #container.lost div#info-lost {
   display: block;
 }
+body #container.notfound div#info-notfound {
+  display: block;
+}
 body .card {
   border: 1px solid #ccc;
   border-radius: 12px;
@@ -163,6 +166,14 @@ body div.info div.item.remark .value {
 }
 body div.info#info-lost {
   background-image: url("../image/info-lost.png");
+  background-position: top 0px center;
+  background-repeat: no-repeat;
+  background-size: 150px;
+  padding-top: 130px;
+  display: none;
+}
+body div.info#info-notfound {
+  background-image: url("../image/info-notfound.png");
   background-position: top 0px center;
   background-repeat: no-repeat;
   background-size: 150px;

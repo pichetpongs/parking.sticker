@@ -55,9 +55,8 @@ body{
             background-repeat:no-repeat;
         }
 
-        &.lost{
-            div#info-lost{ display:block;}   
-        }
+        &.lost{  div#info-lost{ display:block;}   }
+        &.notfound{ div#info-notfound{ display:block;}   }
     }
 
     .card {
@@ -199,6 +198,15 @@ body{
             padding-top:130px;
             display:none;
 
+        }
+
+        &#info-notfound{
+            background-image:url('../image/info-notfound.png');
+            background-position: top 0px center;
+            background-repeat:no-repeat;
+            background-size: 150px;
+            padding-top:130px;
+            display:none;
         }
         
     }

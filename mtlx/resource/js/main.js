@@ -41,6 +41,12 @@ const showLost = (data) => {
     container.classList.remove("loader");
 }
 
+const showNotFound = () => {
+    showError();
+    container.classList.add("notfound");
+    container.classList.remove("loader");
+}
+
 const _scorllTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 const getParamFromURL = (name) => {
@@ -221,10 +227,11 @@ const fetchDataPublic = async(code) => {
 
         if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showError("ไม่พบข้อมูลสำหรับสติกเกอร์นี้"); return; }
+        if (res && res.status == "fail") { showNotFound(); return; }
         if (res && res.status == ""){  }
     
-        if (!res.data) { showError("...รหัสคิวอาร์นี้ไม่มีในระบบ..."); return; }
+        if (!res.data) { showNotFound(); return; }
+
         if (res.data["is-lost"]) {
             showError("");
             showLost(res.data);
