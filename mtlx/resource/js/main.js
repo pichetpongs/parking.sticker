@@ -1,11 +1,14 @@
 
+
 const infoArea00 = document.getElementById('info-area00');
 const infoArea01 = document.getElementById('info-area01');
 const infoArea02 = document.getElementById('info-area02');
 const infoLost = document.getElementById('info-lost');
+const infoNotFound = document.getElementById('info-notfound');
 const cautionArea = document.getElementById('caution-area');
 const container  = document.getElementById('container');
 const frmRegist  = document.getElementById('frm-regist');
+
 
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
