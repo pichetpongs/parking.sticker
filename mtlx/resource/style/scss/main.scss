@@ -188,6 +188,20 @@ body{
                     overflow-y:scroll
                 }
             }
+
+            &[class*="vehicle-type-"]{
+                .value{
+                    padding-left:35px;
+                    background-size:30px;
+                    background-repeat:no-repeat;
+                    background-position:0px center;
+                }
+            }
+
+            &.vehicle-type-car1{ .value{ background-image:url('../image/vehicle-type-car01.png'); }   }
+            &.vehicle-type-car2{ .value{ background-image:url('../image/vehicle-type-car02.png'); }   }
+            &.vehicle-type-bike1{ .value{ background-image:url('../image/vehicle-type-bike01.png'); } }
+
         }
 
         &#info-lost{

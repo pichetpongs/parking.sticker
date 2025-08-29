@@ -179,7 +179,7 @@ const render_info = (data,is_private = false) => {
     data["vehicles"].forEach(function(r,idx){
         vItems +=  `
         <h2>ยานพาหนะ #${idx + 1} </h2>
-        ${renderInfo("ประเภท", r["vehicle-type"] == "BIKE"?"จักรยานยนต์":"รถยนต์")}
+        ${renderInfo("ประเภท", r["vehicle-type"] == "BIKE" ? "จักรยานยนต์" : "รถยนต์", "vehicle-type-" + (r["vehicle-type"] == "BIKE" ? "bike" : "car") + (idx + 1))}
         ${renderInfo("เลขทะเบียน",  r["lp-no"])}
         ${renderInfo("จังหวัดจดทะเบียน",  r["lp-province"])}
         `;

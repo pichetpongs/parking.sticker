@@ -164,6 +164,21 @@ body div.info div.item.remark .value {
   max-height: 180px;
   overflow-y: scroll;
 }
+body div.info div.item[class*=vehicle-type-] .value {
+  padding-left: 35px;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 0px center;
+}
+body div.info div.item.vehicle-type-car1 .value {
+  background-image: url("../image/vehicle-type-car01.png");
+}
+body div.info div.item.vehicle-type-car2 .value {
+  background-image: url("../image/vehicle-type-car02.png");
+}
+body div.info div.item.vehicle-type-bike1 .value {
+  background-image: url("../image/vehicle-type-bike01.png");
+}
 body div.info#info-lost {
   background-image: url("../image/info-lost.png");
   background-position: top 0px center;
