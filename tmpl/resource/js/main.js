@@ -64,6 +64,64 @@ const TTLStore = (() => {
 })();
 
 
+const main = (() => {
+
+    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
+    //-----
+
+    this.elements = {
+        container   : '#container',
+        infoArea00  : '#info-area00',
+        infoArea01  : '#info-area01',
+        infoArea02  : document.getElementById('info-area02'),
+        infoLost    : document.getElementById('info-lost'),
+        infoNotFound: document.getElementById('info-notfound'), 
+        frmRegist: {
+            container: document.getElementById('frm-regist'),
+
+        },
+
+    };
+
+    this.getLocation = () => { return new Promise((resolve, reject) => { navigator.geolocation.getCurrentPosition(resolve, reject); }); }
+    this.getIPAddr = async () => {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const res = await response.json();
+        //-----                                       
+        return res["ip"] ? res["ip"] : undefined;
+    }
+    this.getAgent = () => { }
+
+    this.getRequest = (name) => { return (new URLSearchParams(window.location.search)).get(name); }
+    this.scrollTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); } 
+    this.render = () => {
+        
+        return this;
+    };
+
+    this.init = () => {
+
+        let el = this.elements;
+        this.elements.forEach(function (value, key) {
+            
+            if (typeof (el[key]) == "text") {
+                el[key] = value.includes("#") ? document.getElementById(value) : el[key];
+                el[key] = value.includes(".") ? document.getElementsByClassName(value) : el[key];
+            }
+
+            if (typeof (el[key]) == "object") {
+                el = el[key];
+            }
+        });
+
+        return this.render();
+    }
+
+    return this.init();
+})();
+
+
+
 const renderInfo = (label, value="", itemClass="" , valueClass = '',type=undefined) => {
     if (value.trim() == "" ) return "";
     //-----                                        
@@ -210,21 +268,18 @@ const render_info = (data,is_private = false) => {
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
         ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"], "", "phone", "a")}
-
-        ${data["is-regist"]? renderInfo("วันลงทะเบียน", new Date(info_owner["datetime-regist"]).toLocaleDateString('th-TH', {
+        ${renderInfo("วันลงทะเบียน", new Date(info_owner["datetime-regist"]).toLocaleDateString('th-TH', {
             weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
             year: 'numeric',     // แสดงปีแบบ 4 หลัก
             month: 'long',       // แสดงชื่อเดือน (กันยายน)
             day: 'numeric'       // แสดงวันเป็นตัวเลข
-        }), "", "") : ""}
-
-        ${data["is-regist"]? renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
+        }), "", "")}
+        ${renderInfo("วันหมดอายุ", new Date(info_owner["date-expire"]).toLocaleDateString('th-TH',{
           weekday: 'long',     // แสดงชื่อวัน (จันทร์ อังคาร ...)
           year: 'numeric',     // แสดงปีแบบ 4 หลัก
           month: 'long',       // แสดงชื่อเดือน (กันยายน)
           day: 'numeric'       // แสดงวันเป็นตัวเลข
-        }), "", "expired"):""}
-
+        }),"", "expired")}
         ${renderInfo("หมายเหตุ", info_owner["remark"],"remark")}
 
         ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดผู้ใช้สิทธิ์ฯเพิ่มเติม</button>`) }
