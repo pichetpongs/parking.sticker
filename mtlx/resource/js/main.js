@@ -12,6 +12,92 @@ const frmRegist  = document.getElementById('frm-regist');
 
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
+const TTLStore = (() => {
+    const NS = 'app:ttl:'; // กันชนชื่อ key
+    const now = () => Date.now();
+    //-----             
+    function set(key, value, ttlMs) {
+        const rec = { value,  expiresAt: ttlMs ? now() + ttlMs : null, savedAt: now(), v: 1,};
+        localStorage.setItem(NS + key, JSON.stringify(rec));
+    }
+
+    function get(key) {
+        const raw = localStorage.getItem(NS + key);
+        if (!raw) return null;
+
+        try {
+            const rec = JSON.parse(raw);
+            if (rec.expiresAt && now() > rec.expiresAt) {  // หมดอายุแล้ว—ลบทิ้ง      
+                localStorage.removeItem(NS + key);
+                return null;
+            }
+
+            return rec.value;
+
+        } catch {   // ข้อมูลพัง—เคลียร์ทิ้ง
+            localStorage.removeItem(NS + key);
+            return null;
+        }
+    }
+
+    function remove(key) {
+        localStorage.removeItem(NS + key);
+    }
+
+    // เอาไว้เรียกเป็นครั้งคราว เพื่อล้าง key ที่หมดอายุ (ถ้ามีเยอะ)
+    function sweep() {
+        const prefix = NS;
+        for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (!k || !k.startsWith(prefix)) continue;
+
+            try {
+                const rec = JSON.parse(localStorage.getItem(k));
+                if (rec?.expiresAt && now() > rec.expiresAt) {  localStorage.removeItem(k); }
+            } catch {
+                localStorage.removeItem(k);
+            }
+        }
+    }
+
+    return { set, get, remove, sweep };
+})();
+
+
+const main = (() => {
+
+    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
+    //-----
+
+    const element = {
+        container: document.getElementById('container'),
+        infoArea00: document.getElementById('info-area00'),
+        infoArea01: document.getElementById('info-area01'),
+        infoArea02: document.getElementById('info-area02'),
+        infoLost: document.getElementById('info-lost'),
+        infoNotFound: document.getElementById('info-notfound'), 
+        frmRegist: {
+            container: document.getElementById('frm-regist'),
+
+        },
+
+    };
+
+
+    this.getLocation = () => { return new Promise((resolve, reject) => {  navigator.geolocation.getCurrentPosition(resolve, reject); }); }
+    this.getRequest = (name) => { return (new URLSearchParams(window.location.search)).get(name); }
+    this.scrollTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); } 
+    this.render = () => {
+        
+    };
+
+
+    
+
+    return this;
+})();
+
+
 
 const renderInfo = (label, value="", itemClass="" , valueClass = '',type=undefined) => {
     if (value.trim() == "" ) return "";
@@ -118,7 +204,9 @@ const render_form = (data)=>{
     document.getElementById('vehicle-type').value = data["vehicle-type"] || '';
     document.getElementById('vehicle-type').dispatchEvent(new Event("change"));
     //-----
-    document.getElementById('permit-qr').value = getParamFromURL("c");
+    document.getElementsByClassName('permit-qr').item(0).value = getParamFromURL("c");
+    document.getElementsByClassName('permit-qr').item(1).value = getParamFromURL("c");
+  
     //-----
     document.getElementById('vehicle-type').required = true;
     document.getElementById('label-no').required = true;
@@ -251,19 +339,22 @@ const fetchDataPublic = async(code) => {
     }
 }
 
-const fetchDataPrivate = async() =>{
+const fetchDataPrivate = async(key) =>{
     try {
 
         if (container.classList.contains("loader")) return 0;
 
-        const key = prompt("กรุณากรอกรหัสผ่าน:");
-        const qr  = getParamFromURL("c");
+        const qr = getParamFromURL("c");
+        //-----
+        key = key ? key : prompt("กรุณากรอกรหัสผ่าน:");
 
         if(key=="" || !key) return 0;
         //-----
         _scorllTop();
         //-----
-        showError("...กำลังเข้าถึงข้อมูล...");
+
+        infoArea01.innerHTML == "" ? showError("<h1>... กำลังค้นหา ...</h1>") : showError("...กำลังเข้าถึงข้อมูล...");
+
         container.classList.add("loader");
 
         let ipAddr = await fetchIPAddr();
@@ -278,9 +369,13 @@ const fetchDataPrivate = async() =>{
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
         if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึง/รหัสผ่านผิด ..."); return; }
-        
+
+        if (!res.data["is-regist"]) { render_form(res.data); return 0; }
+
         showError("");
-        render_info(res.data,true);
+        render_info(res.data, true);
+
+        TTLStore.set('key', key, 24 * 60 * 60 * 1000);
         
 
     } catch (e) {
@@ -329,4 +424,10 @@ const pushDataRegist = async(formData) =>{
 
 const code = getParamFromURL("c");
 
-if (code) { fetchDataPublic(code); } else { showError("ไม่พบรหัสคิวอาร์ในเส้นทาง"); }
+if (code) {
+    let key = TTLStore.get("key") || undefined;
+    //----
+    key ? fetchDataPrivate(key) : fetchDataPublic(code);
+} else {
+    showError("ไม่พบรหัสคิวอาร์ในเส้นทาง");
+}
