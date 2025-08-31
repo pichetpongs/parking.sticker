@@ -241,6 +241,7 @@ const render_info = (data,is_private = false) => {
         <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
         ${renderInfo("รหัสคิวอาร์", info_owner["permit-qr"])}
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
+        ${data["vehicles"].length? "": renderInfo("ประเภท", info_owner["vehicle-type"] == "BIKE" ? "จักรยานยนต์" : "รถยนต์")}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
         ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"], "", "phone", "a")}
@@ -369,13 +370,14 @@ const fetchDataPrivate = async(key) =>{
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
         if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึง/รหัสผ่านผิด ..."); return; }
-
+        if (!res.data) { showNotFound(); return; }
+        
         if (!res.data["is-regist"]) { render_form(res.data); return 0; }
 
         showError("");
         render_info(res.data, true);
 
-        TTLStore.set('key', key, 24 * 60 * 60 * 1000);
+        !TTLStore.get("key") ? TTLStore.set('key', key, 2 * 60 * 60 * 1000):"";
         
 
     } catch (e) {
