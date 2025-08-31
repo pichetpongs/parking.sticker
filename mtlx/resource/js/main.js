@@ -13,7 +13,7 @@ const frmRegist  = document.getElementById('frm-regist');
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
 const TTLStore = (() => {
-    const NS = 'app:ttl:'; // กันชนชื่อ key
+    const NS = 'app:parkingpermit:'; // กันชนชื่อ key
     const now = () => Date.now();
     //-----             
     function set(key, value, ttlMs) {
