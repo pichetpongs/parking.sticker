@@ -64,41 +64,6 @@ const TTLStore = (() => {
 })();
 
 
-const main = (() => {
-
-    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
-    //-----
-
-    const element = {
-        container: document.getElementById('container'),
-        infoArea00: document.getElementById('info-area00'),
-        infoArea01: document.getElementById('info-area01'),
-        infoArea02: document.getElementById('info-area02'),
-        infoLost: document.getElementById('info-lost'),
-        infoNotFound: document.getElementById('info-notfound'), 
-        frmRegist: {
-            container: document.getElementById('frm-regist'),
-
-        },
-
-    };
-
-
-    this.getLocation = () => { return new Promise((resolve, reject) => {  navigator.geolocation.getCurrentPosition(resolve, reject); }); }
-    this.getRequest = (name) => { return (new URLSearchParams(window.location.search)).get(name); }
-    this.scrollTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); } 
-    this.render = () => {
-        
-    };
-
-
-    
-
-    return this;
-})();
-
-
-
 const renderInfo = (label, value="", itemClass="" , valueClass = '',type=undefined) => {
     if (value.trim() == "" ) return "";
     //-----                                        
