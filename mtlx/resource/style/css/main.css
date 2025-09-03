@@ -9,7 +9,7 @@ body h1, body h2 {
   font-size: 20px;
   margin-bottom: 8px;
   text-align: center;
-  color: #2980b9;
+  color: #0F3D3E;
 }
 body h2 {
   font-size: 18px;
@@ -21,7 +21,7 @@ body button, body .button {
   color: #2980b9;
   padding: 8px 8px;
   border: none;
-  background-color: #1976d2;
+  background-color: #D6B166;
   color: white;
   border-radius: 10px;
   box-sizing: border-box;
@@ -32,14 +32,14 @@ body button, body .button {
   width: 100%;
 }
 body button:hover, body .button:hover {
-  background-color: rgb(32.0425531915, 130.7808510638, 228.4574468085);
+  background-color: rgb(219.3891752577, 187.2525773196, 122.1108247423);
 }
 
 body #container {
   max-width: 500px;
   margin: 10px 10px;
   padding: 20px;
-  background: white;
+  background: #FFFFFF;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-height: 300px;
@@ -47,7 +47,7 @@ body #container {
   padding-bottom: 300px;
 }
 body #container.loader {
-  background-image: url("../image/loader.png");
+  background-image: url("../image/loader03.png");
   background-position: top 10px right 10px;
   background-repeat: no-repeat;
 }

@@ -10,7 +10,7 @@
         font-size: 20px;
         margin-bottom: 8px;
         text-align: center;
-        color: #2980b9;
+        color: #0F3D3E;
     }
 
     h2{ font-size: 18px; margin-top:20px; margin-bottom:0px; }
@@ -20,7 +20,7 @@
         color: #2980b9;
         padding: 8px 8px;
         border: none;
-        background-color: #1976d2;
+        background-color: #D6B166;
         color: white;
         border-radius: 10px;
         box-sizing: border-box;
@@ -31,7 +31,7 @@
         width: 100%;
 
         &:hover{
-             background-color: lighten(#1976d2,5%);
+             background-color: lighten(#D6B166,5%);
         }
     }
 }
@@ -42,7 +42,7 @@ body{
         max-width: 500px;
         margin: 10px 10px;
         padding: 20px;
-        background: white;
+        background: #FFFFFF;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         min-height:300px;
@@ -50,7 +50,7 @@ body{
         padding-bottom: 300px;
 
         &.loader{
-            background-image:url('../image/loader.png');
+            background-image:url('../image/loader03.png');
             background-position: top 10px right 10px;
             background-repeat:no-repeat;
         }
