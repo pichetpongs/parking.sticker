@@ -4,5 +4,17 @@
     "inputFiles": [
       "mtlx/resource/js/main.js"
     ]
+  },
+  {
+    "outputFileName": "demo/resource/js/main.min.min.js",
+    "inputFiles": [
+      "demo/resource/js/main.min.js"
+    ]
+  },
+  {
+    "outputFileName": "demo/resource/js/main.min.js",
+    "inputFiles": [
+      "demo/resource/js/main.js"
+    ]
   }
 ]

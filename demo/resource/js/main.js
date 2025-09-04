@@ -9,7 +9,6 @@ const cautionArea = document.getElementById('caution-area');
 const container  = document.getElementById('container');
 const frmRegist  = document.getElementById('frm-regist');
 
-
 const URL_API = "https://script.google.com/macros/s/AKfycby3nXqskzD5TUI79puuMI3SYs3afUk8ddI2p1lLS1wUHOinSY_q5oT3XgvvmhTSgN1mLA/exec?channel=web";
 
 const TTLStore = (() => {
@@ -176,7 +175,8 @@ const render_form = (data)=>{
     document.getElementById('vehicle-type').required = true;
     document.getElementById('label-no').required = true;
 
-    let is_enable =  data["label-no"]!="" && data["vehicle-type"]!="" ;
+    let is_enable = data && data["label-no"] != "" && data["vehicle-type"] != "";
+    //let is_enable = false;
 
     document.getElementById('label-no').disabled = is_enable;
     document.getElementById('vehicle-type').disabled = is_enable;
@@ -227,7 +227,7 @@ const render_info = (data,is_private = false) => {
 
         ${renderInfo("หมายเหตุ", info_owner["remark"],"remark")}
 
-        ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดผู้ใช้สิทธิ์ฯเพิ่มเติม</button>`) }
+        ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดเพิ่มเติม (ผู้ดูแล:12345)</button>`) }
     `;
 
     infoArea02.innerHTML = "";
@@ -287,8 +287,9 @@ const fetchDataPublic = async(code) => {
 
         if (!res){  showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
-        if (res && res.status == "fail") { showNotFound(); return; }
-        if (res && res.status == ""){  }
+        if (res && res.status == "not-found") { render_form(res.data); return 0; }
+        //if (res && res.status == "fail") { showNotFound(); return; }
+        //if (res && res.status == ""){  }
     
         if (!res.data) { showNotFound(); return; }
 
@@ -341,6 +342,12 @@ const fetchDataPrivate = async(key) =>{
         if (!res.data) { showNotFound(); return; }
         
         if (!res.data["is-regist"]) { render_form(res.data); return 0; }
+
+        if (res.data["is-lost"]) {
+            showError("");
+            showLost(res.data);
+            return 0;
+        }
 
         showError("");
         render_info(res.data, true);

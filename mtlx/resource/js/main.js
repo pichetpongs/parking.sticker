@@ -342,6 +342,12 @@ const fetchDataPrivate = async(key) =>{
         
         if (!res.data["is-regist"]) { render_form(res.data); return 0; }
 
+        if (res.data["is-lost"]) {
+            showError("");
+            showLost(res.data);
+            return 0;
+        }
+
         showError("");
         render_info(res.data, true);
 
