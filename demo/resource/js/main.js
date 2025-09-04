@@ -227,7 +227,11 @@ const render_info = (data,is_private = false) => {
 
         ${renderInfo("หมายเหตุ", info_owner["remark"],"remark")}
 
-        ${(is_private?"":`<button onclick="fetchDataPrivate()">รายละเอียดเพิ่มเติม (ผู้ดูแล:12345)</button>`) }
+        ${(is_private ? "" : `
+           <button onclick="fetchDataPrivate()">รายละเอียดเพิ่มเติม (ผู้ดูแล:12345)
+            <br><lable style="font-size:14px;">(ใช้งานได้ 2 ชม โดยไม่ต้องป้อนรหัสผ่านใหม่)
+            </button>`) }
+       
     `;
 
     infoArea02.innerHTML = "";
