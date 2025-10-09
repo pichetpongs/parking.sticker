@@ -9,5 +9,9 @@
   {
     "outputFile": "mtlx/resource/js/main.es5.js",
     "inputFile": "mtlx/resource/js/main.js"
+  },
+  {
+    "outputFile": "pyp1/resource/js/main.es5.js",
+    "inputFile": "pyp1/resource/js/main.js"
   }
 ]

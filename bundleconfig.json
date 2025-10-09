@@ -16,5 +16,17 @@
     "inputFiles": [
       "demo/resource/js/main.js"
     ]
+  },
+  {
+    "outputFileName": "pyp1/resource/style/css/main.min.css",
+    "inputFiles": [
+      "pyp1/resource/style/css/main.css"
+    ]
+  },
+  {
+    "outputFileName": "pyp1/resource/js/main.min.js",
+    "inputFiles": [
+      "pyp1/resource/js/main.js"
+    ]
   }
 ]
