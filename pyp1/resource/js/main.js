@@ -9,8 +9,7 @@ const cautionArea = document.getElementById('caution-area');
 const container  = document.getElementById('container');
 const frmRegist  = document.getElementById('frm-regist');
 
-
-const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
+const URL_API =  "https://script.google.com/macros/s/AKfycby3nXqskzD5TUI79puuMI3SYs3afUk8ddI2p1lLS1wUHOinSY_q5oT3XgvvmhTSgN1mLA/exec?channel=web";
 
 const TTLStore = (() => {
     const NS = 'app:parkingpermit:'; // กันชนชื่อ key
