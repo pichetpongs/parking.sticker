@@ -65,7 +65,7 @@ const TTLStore = (() => {
 
 
 const renderInfo = (label, value="", itemClass="" , valueClass = '',type=undefined) => {
-    if (value.toString().trim() == "" ) return "";
+    if (value.toString().trim() == "") return "";
     //-----                                        
     let display_value = value;
     if(type == "a") display_value = `<a href="tel:${value.replace(/\D/g, '')}">${value}</a>`;
