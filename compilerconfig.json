@@ -13,5 +13,13 @@
   {
     "outputFile": "pyp1/resource/js/main.es5.js",
     "inputFile": "pyp1/resource/js/main.js"
+  },
+  {
+    "outputFile": "demo.pyp1/resource/style/css/main.css",
+    "inputFile": "demo.pyp1/resource/style/scss/main.scss"
+  },
+  {
+    "outputFile": "pyp1/resource/style/css/main.css",
+    "inputFile": "pyp1/resource/style/scss/main.scss"
   }
 ]
