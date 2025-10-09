@@ -343,6 +343,8 @@ const fetchDataPrivate = async(key) =>{
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
         if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึง/รหัสผ่านผิด ..."); return; }
+        if (res && res.status == "not-found") { render_form(res.data); return 0; }
+
         if (!res.data) { showNotFound(); return; }
         
         if (!res.data["is-regist"]) { render_form(res.data); return 0; }
