@@ -28,5 +28,11 @@
     "inputFiles": [
       "pyp1/resource/js/main.js"
     ]
+  },
+  {
+    "outputFileName": "demo.pyp1/resource/js/main.min.js",
+    "inputFiles": [
+      "demo.pyp1/resource/js/main.js"
+    ]
   }
 ]
