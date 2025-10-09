@@ -1,7 +1,13 @@
 ﻿[
-    {
-        "outputFile": "mtlx/resource/style/css/main.css",
-        "inputFile": "mtlx/resource/style/scss/main.scss",
-        "minify": { "enabled": true }
+  {
+    "outputFile": "mtlx/resource/style/css/main.css",
+    "inputFile": "mtlx/resource/style/scss/main.scss",
+    "minify": {
+      "enabled": true
     }
+  },
+  {
+    "outputFile": "mtlx/resource/js/main.es5.js",
+    "inputFile": "mtlx/resource/js/main.js"
+  }
 ]
