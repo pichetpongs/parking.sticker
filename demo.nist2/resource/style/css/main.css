@@ -94,7 +94,7 @@ body form input:focus-visible, body form input:focus, body form select:focus-vis
 body div.logo {
   text-align: center;
   margin-bottom: 10px;
-  height: 180px;
+  height: 200px;
 }
 body div.logo img {
   max-width: 100%;
