@@ -309,7 +309,7 @@ const fetchDataPublic = async(code) => {
 
     } catch (e) {
         container.classList.remove("loader");
-        showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");
+        showError("...เกิดข้อผิดพลาดในการดึงข้อมูล...");  
     }
 }
 
@@ -339,7 +339,7 @@ const fetchDataPrivate = async(key) =>{
             body: JSON.stringify({ "user-agent":navigator.userAgent,"ip-addr":ipAddr, "action":"permit-private", "permit-qr":qr, "user-key": key })
         });
         const res = await response.json();
-        
+                               
         if (!res){ showError("...เกิดข้อผิดพลาดในการดึงข้อมูล..."); return;}
         //-----
         if (res && res.status == "fail") { showError("... ไม่อนุญาติให้เข้าถึง/รหัสผ่านผิด ..."); return; }
@@ -348,8 +348,8 @@ const fetchDataPrivate = async(key) =>{
         if (!res.data) { showNotFound(); return; }
         
         if (!res.data["is-regist"]) { render_form(res.data); return 0; }
-
-        if (res.data["is-lost"]) {
+                                
+        if (res.data["is-lost"] ) {
             showError("");
             showLost(res.data);
             return 0;

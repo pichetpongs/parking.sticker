@@ -13,8 +13,9 @@ const frmRegist  = document.getElementById('frm-regist');
 const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
 
 const TTLStore = (() => {
-    const NS = 'app:parkingpermit:'; // กันชนชื่อ key
+    const NS = 'app:parkingpermit:'; // ทดสอบภาาไทย
     const now = () => Date.now();
+    ทดสอบภาาไทย
     //-----             
     function set(key, value, ttlMs) {
         const rec = { value,  expiresAt: ttlMs ? now() + ttlMs : null, savedAt: now(), v: 1,};
