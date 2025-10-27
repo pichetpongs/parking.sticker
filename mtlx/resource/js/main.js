@@ -34,7 +34,7 @@ const TTLStore = (() => {
 
             return rec.value;
 
-        } catch {   // ข้อมูลพัง—เคลียร์ทิ้ง
+        } catch(e) {   // ข้อมูลพัง—เคลียร์ทิ้ง
             localStorage.removeItem(NS + key);
             return null;
         }
@@ -53,8 +53,10 @@ const TTLStore = (() => {
 
             try {
                 const rec = JSON.parse(localStorage.getItem(k));
-                if (rec?.expiresAt && now() > rec.expiresAt) {  localStorage.removeItem(k); }
-            } catch {
+                if (rec && rec.expiresAt && now() > rec.expiresAt) {localStorage.removeItem(k); }
+
+            } catch (e) {
+
                 localStorage.removeItem(k);
             }
         }
@@ -206,7 +208,8 @@ const render_info = (data,is_private = false) => {
         <h1>ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ</h1>
         ${renderInfo("รหัสคิวอาร์", info_owner["permit-qr"])}
         ${renderInfo("ลำดับสติกเกอร์", info_owner["label-no"])}
-        ${data["vehicles"].length? "": renderInfo("ประเภท", info_owner["vehicle-type"] == "BIKE" ? "จักรยานยนต์" : "รถยนต์")}
+        ${data["vehicles"].length ? "" : renderInfo("ประเภท", info_owner["vehicle-type"] == "BIKE" ? "จักรยานยนต์" : "รถยนต์")}
+        ${renderInfo("อาคาร/โซนจอดฯ", (function (val) { return ({ "BLD_A": "อาคาร A", "BLD_B": "อาคาร B", "BLD_C": "อาคาร C" })[val]; })(info_owner["owner-zone"]))}
         ${renderInfo("เลขที่ห้องชุด", info_owner["owner-unit"])}
         ${renderInfo("ชื่อเจ้าของร่วมฯ", info_owner["owner-name"])}
         ${renderInfo("หมายเลขโทรศัพท์", info_owner["owner-phone"], "", "phone", "a")}
