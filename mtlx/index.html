@@ -6,10 +6,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resource/style/css/main.min.css" />
 
-    <title>ParkQR Viewer - อาคารชุดเมโทรสักซ์-เกษตร</title>
+    <title data-lang="title">ParkQR Viewer - อาคารชุดเมโทรสักซ์-เกษตร</title>
 </head>
-<body >
+<body>
     <div id="container">
+
+        <label class="sw-lang" title="Toggle language">
+            <input class="sw-lang-input" type="checkbox" id="lang-toggle" aria-checked="false" aria-label="Switch to English" />
+            <span class="sw-lang-track" role="presentation">
+                <span class="sw-lang-knob" aria-hidden="true">
+                    <span class="abbr">TH</span>
+                </span>
+            </span>
+        </label>
+
         <div class="logo">
             <img src="resource/style/image/logo.1024.png" />
         </div>
@@ -18,49 +28,49 @@
         <div class="info" id="info-area02"></div>
 
         <div class="info" id="info-lost">
-            <div class="error">
-                สติกเกอร์นี้ถูกลงบันทึกประจำวันแล้วว่าสูญหาย <br />การครอบครองหรือนำไปใช้งานต่อ<br />จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล <br /> หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที 
+            <div class="error" data-lang="lost.text">
+                สติกเกอร์นี้ถูกลงบันทึกประจำวันแล้วว่าสูญหาย <br />การครอบครองหรือนำไปใช้งานต่อ<br />จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล <br /> หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที
             </div>
         </div>
 
         <div class="info" id="info-notfound">
-            <div class="error">
+            <div class="error" data-lang="message.not-found">
                 ไม่พบข้อมูลจากรหัสคิวอาร์โค้ดนี้ <br />กรุณาตรวจสอบใหม่อีกครั้ง
             </div>
         </div>
 
         <div class="" id="frm-regist">
-            <h1>ลงทะเบียนสติกเกอร์ใหม่</h1>
+            <h1 data-lang="header02">ลงทะเบียนสติกเกอร์ใหม่</h1>
             <form method="post">
 
                 <label>
-                    <span>รหัสคิวอาร์</span>
+                    <span data-lang="permit-qr">รหัสคิวอาร์</span>
                     <input type="text" name="permit-qr" class="permit-qr" disabled>
-                    <input type="hidden" name="permit-qr" class="permit-qr">
+
                 </label>
                 <label>
-                    <span>ลำดับสติกเกอร์</span>
+                    <span data-lang="label-no">ลำดับสติกเกอร์</span>
                     <input type="text" name="label-no" id="label-no" required maxlength="8" placeholder="2569/888">
                 </label>
                 <label>
-                    <span>ประเภทยานพาหนะ</span>
+                    <span data-lang="vehicle-type">ประเภทยานพาหนะ</span>
                     <select name="vehicle-type" id="vehicle-type" required>
-                        <option value="">-- เลือกประเภท --</option>
-                        <option value="CAR">รถยนต์</option>
-                        <option value="BIKE">รถจักรยานยนต์</option>
+                        <option value="" data-lang="option">-- เลือกประเภท --</option>
+                        <option value="CAR" data-lang="option-value.vehicle-type.CAR">รถยนต์</option>
+                        <option value="BIKE" data-lang="option-value.vehicle-type.BIKE">รถจักรยานยนต์</option>
                     </select>
                 </label>
                 <div class="card field-vehicle" id="field-vehicle01">
                     <div class="vehicle-type"></div>
-                    <h2>ยานพาหนะ #1</h2>
+                    <h2 data-lang="header-vehicle01">ยานพาหนะ #1</h2>
                     <label>
-                        <span>เลขป้ายทะเบียน</span>
+                        <span data-lang="lp-no">เลขป้ายทะเบียน</span>
                         <input type="text" name="vehicles[0][lp-no]" id="lp-no-0" placeholder="ทท 8888 / ททท 888">
                     </label>
                     <label>
-                        <span>จังหวัดจดทะเบียน</span>
+                        <span data-lang="lp-province">จังหวัดจดทะเบียน</span>
                         <select name="vehicles[0][lp-province]" id="lp-province-0">
-                            <option value="">-- เลือกจังหวัด --</option>
+                            <option value="" data-lang="option-province">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
                             <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
                             <option value="กาญจนบุรี">กาญจนบุรี</option>
@@ -144,15 +154,15 @@
 
                 <div class="card field-vehicle" id="field-vehicle02">
                     <div class="vehicle-type"></div>
-                    <h2>ยานพาหนะ #2</h2>
+                    <h2 data-lang="header-vehicle02">ยานพาหนะ #2</h2>
                     <label>
-                        <span>เลขป้ายทะเบียน</span>
+                        <span data-lang="lp-no">เลขป้ายทะเบียน</span>
                         <input type="text" name="vehicles[1][lp-no]" id="lp-no-1" placeholder="ทท 8888 / ททท 888">
                     </label>
                     <label>
-                        <span>จังหวัดจดทะเบียน</span>
+                        <span data-lang="lp-province">จังหวัดจดทะเบียน</span>
                         <select name="vehicles[1][lp-province]" id="lp-province-1">
-                            <option value="">-- เลือกจังหวัด --</option>
+                            <option value="" data-lang="option-province">-- เลือกจังหวัด --</option>
                             <option value="กระบี่">กระบี่</option>
                             <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
                             <option value="กาญจนบุรี">กาญจนบุรี</option>
@@ -234,53 +244,53 @@
                     </label>
                 </div>
 
-                <h2>ข้อมูลเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</h2>
+                <h2 data-lang="header03">ข้อมูลเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</h2>
                 <label>
-                    <span>อาคาร/โซนจอด</span>
+                    <span data-lang="owner-zone">อาคาร/โซนจอด</span>
                     <select name="owner-zone" id="owner-zone">
-                        <option value="">-- เลือกประเภท --</option>
-                        <option value="BLD_A">อาคาร A</option>
-                        <option value="BLD_B">อาคาร B</option>
-                        <option value="BLD_C">อาคาร C</option>
+                        <option value="" data-lang="option">-- เลือกประเภท --</option>
+                        <option value="BLD_A" data-lang="option-value.owner-zone.BLD_A">อาคาร A</option>
+                        <option value="BLD_B" data-lang="option-value.owner-zone.BLD_B">อาคาร B</option>
+                        <option value="BLD_C" data-lang="option-value.owner-zone.BLD_C">อาคาร C</option>
                     </select>
                 </label>
                 <label>
-                    <span>เลขที่ห้องชุด</span>
+                    <span data-lang="owner-unit">เลขที่ห้องชุด</span>
                     <input type="text" name="owner-unit" id="owner-unit" placeholder="88/888">
                 </label>
                 <label>
-                    <span>ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</span>
+                    <span data-lang="owner-name">ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</span>
                     <input type="text" name="owner-name" id="owner-name" placeholder="ชื่อ นามสกุล">
                 </label>
 
                 <label>
-                    <span>หมายเลขโทรศัพท์</span>
+                    <span data-lang="owner-phone">หมายเลขโทรศัพท์</span>
                     <input type="tel" name="owner-phone" id="owner-phone" pattern="0[0-9]{9}" placeholder="0123456789">
                 </label>
 
 
-                <button type="submit">ลงทะเบียนสติกเกอร์</button>
+                <button type="submit" data-lang="btn-regist">ลงทะเบียนสติกเกอร์</button>
             </form>
         </div>
 
         <div class="footer">
 
-            <div class="caution" id="caution-area">
+            <div class="caution" data-lang="caution">
                 หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ<br />กรุณาติดต่อสำนักงานนิติบุคคล
             </div>
 
-            <div class="disclaimer">
+            <div class="disclaimer" data-lang="disclaimer">
                 <div>นิติบุคคลอาคารชุดเมโทรลักซ์-เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
-
             </div>
-            <div class="notice">
+            <div class="notice" data-lang="notice">
                 สติกเกอร์จอดรถเป็นทรัพย์สินของนิติบุคคลอาคารชุด ใช้เพื่อระบุตัวตนของผู้ได้รับสิทธิตามระเบียบนิติบุคคลเท่านั้น ผู้ครอบครองไม่มีสิทธิเป็นเจ้าของ ห้ามโอน ขาย หรือใช้ในวัตถุประสงค์อื่น นิติบุคคลขอสงวนสิทธิเรียกคืนหรือเพิกถอนการใช้ได้ทันที หากผู้ครอบครองสิ้นสิทธิหรือฝ่าฝืนข้อกำหนด
             </div>
 
-            <div class="version"> ParkQR Viewer (version 1.2)</div>
+
+
+            <div class="version" data-lang="version"> ParkQR Viewer (version 1.2)</div>
         </div>
     </div>
-
     
     <script src="resource/js/main.min.js"></script>
 </body>
