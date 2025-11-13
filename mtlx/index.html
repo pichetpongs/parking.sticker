@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="resource/style/css/main.min.css?version" />
+    <!--link rel="stylesheet" href="resource/style/css/main.min.css" /-->
 
     <title data-lang="title">ParkQR Viewer - อาคารชุดเมโทรสักซ์-เกษตร</title>
 </head>
@@ -292,6 +292,23 @@
         </div>
     </div>
     
-    <script src="resource/js/main.min.js"></script>
+    <!--script src="resource/js/main.min.js"></!--script-->
+
+    <script>
+        const date_version = "20251114";
+        //-----
+        const css = document.createElement("link");
+
+        css.rel = "stylesheet";
+        css.href = `resource/style/css/main.min.css?v=${date_version}`;
+        document.head.appendChild(css);
+
+        const js = document.createElement("script");
+        js.src = `resource/js/main.min.js?v=${date_version}`;
+
+        document.head.appendChild(js);
+
+    </script>
+
 </body>
 </html>
