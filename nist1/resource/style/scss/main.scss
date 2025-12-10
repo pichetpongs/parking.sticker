@@ -12,7 +12,7 @@ $border-radius : 10px;
 
 $logo-height: 170px;
 
-$disp-field-parkingzone: none;
+$disp-field-owner-zone: none;
 
 
 body {
@@ -425,7 +425,7 @@ body {
 
 
         label{
-            &#field-owner-zone{display:$disp-field-parkingzone;}
+            &#field-owner-zone{display:$disp-field-owner-zone;}
         }
 
 

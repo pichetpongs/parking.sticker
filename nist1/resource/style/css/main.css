@@ -335,6 +335,9 @@ body div#frm-regist.vehicle-type-bike div.field-vehicle:nth-of-type(2) {
 body div#frm-regist.vehicle-type-bike div.field-vehicle div {
   background-image: url("../image/vehicle-type-bike01.png");
 }
+body div#frm-regist label#field-owner-zone {
+  display: none;
+}
 body div.footer {
   position: absolute;
   margin-top: 30px;
