@@ -12,6 +12,9 @@ $border-radius : 10px;
 
 $logo-height: 170px;
 
+$disp-field-parkingzone: none;
+
+
 body {
     font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
@@ -398,6 +401,7 @@ body {
                 }
 
                 &:nth-of-type(2) {
+                    
                     div {
                         background-image: url('../image/vehicle-type-car02.png');
                     }
@@ -418,6 +422,13 @@ body {
                 }
             }
         }
+
+
+        label{
+            &#field-owner-zone{display:$disp-field-parkingzone;}
+        }
+
+
     }
 
     div.footer {

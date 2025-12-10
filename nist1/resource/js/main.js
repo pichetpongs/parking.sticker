@@ -101,7 +101,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             //-----
             "caution": "If you need to update or change parking permit information,<br>please contact the juristic person office.",
-            "disclaimer": "METROLUXE Kaset Condominium<br>Juristic Person Office<br>9/169 Liap Mueang Nonthaburi Rd., Soi 14 Tha Sai, Mueang Nonthaburi Nonthaburi 11000 THAILAND",
+            "disclaimer": "NICE SUITES Juristic Person Office<br>9/169 Liap Mueang Nonthaburi Rd., Soi 14 Tha Sai, Mueang Nonthaburi Nonthaburi 11000 THAILAND",
             "notice": "The parking sticker is the property of the condominium juristic person.It is issued solely for the purpose of identifying authorized users in accordance with the condominium’s regulations. The holder does not possess ownership rights over the sticker. Transfer, sale, or use for any other purpose is strictly prohibited.The juristic person reserves the right to revoke or withdraw the sticker immediately in the event that the holder’s rights are terminated or any regulations are violated.",
             "lost": {
                 "text": "This sticker has been reported lost.<br>Possession or use is prohibited.<br>Please return it to the Juristic Person Office immediately.",
