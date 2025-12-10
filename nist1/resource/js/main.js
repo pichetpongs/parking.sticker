@@ -25,7 +25,7 @@ const INSTANCE  = 'Viewer';
 NS(NAMESPACE, NAMECLASS, (() => {
 
     const VERSION     = "2.0.4";
-    const CODE_CLIENT = "mtlx"; //กำหนดรหัสของ client 
+    const CODE_CLIENT = "nist1"; //กำหนดรหัสของ client 
 
     const API_ACTION = {
         "permit-regist" : "permit-regist",
@@ -34,7 +34,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
     }
 
     //URL สำหรับดึงข้อมูล
-    const URL_API = "https://script.google.com/macros/s/AKfycbyVtPa9o1sbeRkbBjiU4HNP98h9RvO8nsDRouD8l87Qz851en8isAlxSiyv7NvwwiHGBA/exec?channel=web";
+    const URL_API = "https://script.google.com/macros/s/AKfycbzAPAhWxwU26Gd92Mk8H1-I3br7pcU_PmpRRzyQXSyXR2SLo998xWp8yM8gr71VvQxb/exec?channel=web";
 
     //ตัวกำหนดให้ server อ่านค่าจาก json (0) หรือจากตารางข้อมูล (1)
     const OPT_DIRECT = 0;
@@ -73,7 +73,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
         },
 
         "en-EN": {
-            "title": "ParkQR Viewer - METROLUXE Kaset Condominium",
+            "title": "ParkQR Viewer - NICE SUITES Sanambinnum Condominium",
             "version": `ParkQR Viewer (version ${VERSION})`,
             "header01": "Parking Permit Holder Information",
             "header02": "New registration",
@@ -134,7 +134,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             }
         },
         "th-TH": {
-            "title": "ParkQR Viewer - อาคารชุดเมโทรสักซ์-เกษตร",
+            "title": "ParkQR Viewer - อาคารชุดไนซ สวีท - สนามบินน้ำ",
             "version": `ParkQR Viewer (เวอร์ชัน ${VERSION})`,
             "header01": "ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ",
             "header02": "ลงทะเบียนสติกเกอร์ใหม่",
