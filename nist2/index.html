@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resource/style/css/main.min.css?v=20251114" />
+
+    <title data-lang="title">ParkQR Viewer - อาคารชุดไนซ์สวีท-สนามบินน้ำ</title>
+</head>
+<body>
+    <div id="container">
+
+        <label class="sw-lang" title="Toggle language">
+            <input class="sw-lang-input" type="checkbox" id="lang-toggle" aria-checked="false" aria-label="Switch to English" />
+            <span class="sw-lang-track" role="presentation">
+                <span class="sw-lang-knob" aria-hidden="true">
+                    <span class="abbr">TH</span>
+                </span>
+            </span>
+        </label>
+
+        <div class="logo">
+            <img src="resource/style/image/logo.1024.png" />
+        </div>
+        <div class="info" id="info-area00"></div>
+        <div class="info" id="info-area01"></div>
+        <div class="info" id="info-area02"></div>
+
+        <div class="info" id="info-lost">
+            <div class="error" data-lang="lost.text">
+                สติกเกอร์นี้ถูกลงบันทึกประจำวันแล้วว่าสูญหาย <br />การครอบครองหรือนำไปใช้งานต่อ<br />จะถือว่าไม่ชอบด้วยระเบียบของนิติบุคคล <br /> หากพบเห็นกรุณานำส่งสำนักงานนิติบุคคลทันที
+            </div>
+        </div>
+
+        <div class="info" id="info-notfound">
+            <div class="error" data-lang="message.not-found">
+                ไม่พบข้อมูลจากรหัสคิวอาร์โค้ดนี้ <br />กรุณาตรวจสอบใหม่อีกครั้ง
+            </div>
+        </div>
+
+        <div class="" id="frm-regist">
+            <h1 data-lang="header02">ลงทะเบียนสติกเกอร์ใหม่</h1>
+            <form method="post">
+
+                <label id="field-permit-qr">
+                    <span data-lang="permit-qr">รหัสคิวอาร์</span>
+                    <input type="text" name="permit-qr" class="permit-qr" disabled>
+
+                </label>
+                <label id="field-label-no">
+                    <span data-lang="label-no">ลำดับสติกเกอร์</span>
+                    <input type="text" name="label-no" id="label-no" required maxlength="8" placeholder="2569/888">
+                </label>
+                <label id="field-vehicle-type">
+                    <span data-lang="vehicle-type">ประเภทยานพาหนะ</span>
+                    <select name="vehicle-type" id="vehicle-type" required>
+                        <option value="" data-lang="option">-- เลือกประเภท --</option>
+                        <option value="CAR" data-lang="option-value.vehicle-type.CAR">รถยนต์</option>
+                        <option value="BIKE" data-lang="option-value.vehicle-type.BIKE">รถจักรยานยนต์</option>
+                    </select>
+                </label>
+                <div class="card field-vehicle" id="field-vehicle01">
+                    <div class="vehicle-type"></div>
+                    <h2 data-lang="header-vehicle01">ยานพาหนะ #1</h2>
+                    <label>
+                        <span data-lang="lp-no">เลขป้ายทะเบียน</span>
+                        <input type="text" name="vehicles[0][lp-no]" id="lp-no-0" placeholder="ทท 8888 / ททท 888">
+                    </label>
+                    <label>
+                        <span data-lang="lp-province">จังหวัดจดทะเบียน</span>
+                        <select name="vehicles[0][lp-province]" id="lp-province-0">
+                            <option value="" data-lang="option-province">-- เลือกจังหวัด --</option>
+                            <option value="กระบี่">กระบี่</option>
+                            <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                            <option value="กาญจนบุรี">กาญจนบุรี</option>
+                            <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+                            <option value="กำแพงเพชร">กำแพงเพชร</option>
+                            <option value="ขอนแก่น">ขอนแก่น</option>
+                            <option value="จันทบุรี">จันทบุรี</option>
+                            <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+                            <option value="ชลบุรี">ชลบุรี</option>
+                            <option value="ชัยนาท">ชัยนาท</option>
+                            <option value="ชัยภูมิ">ชัยภูมิ</option>
+                            <option value="ชุมพร">ชุมพร</option>
+                            <option value="เชียงราย">เชียงราย</option>
+                            <option value="เชียงใหม่">เชียงใหม่</option>
+                            <option value="ตรัง">ตรัง</option>
+                            <option value="ตราด">ตราด</option>
+                            <option value="ตาก">ตาก</option>
+                            <option value="นครนายก">นครนายก</option>
+                            <option value="นครปฐม">นครปฐม</option>
+                            <option value="นครพนม">นครพนม</option>
+                            <option value="นครราชสีมา">นครราชสีมา</option>
+                            <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                            <option value="นครสวรรค์">นครสวรรค์</option>
+                            <option value="นนทบุรี">นนทบุรี</option>
+                            <option value="นราธิวาส">นราธิวาส</option>
+                            <option value="น่าน">น่าน</option>
+                            <option value="บึงกาฬ">บึงกาฬ</option>
+                            <option value="บุรีรัมย์">บุรีรัมย์</option>
+                            <option value="ปทุมธานี">ปทุมธานี</option>
+                            <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+                            <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+                            <option value="ปัตตานี">ปัตตานี</option>
+                            <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+                            <option value="พังงา">พังงา</option>
+                            <option value="พัทลุง">พัทลุง</option>
+                            <option value="พิจิตร">พิจิตร</option>
+                            <option value="พิษณุโลก">พิษณุโลก</option>
+                            <option value="เพชรบุรี">เพชรบุรี</option>
+                            <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+                            <option value="แพร่">แพร่</option>
+                            <option value="พะเยา">พะเยา</option>
+                            <option value="ภูเก็ต">ภูเก็ต</option>
+                            <option value="มหาสารคาม">มหาสารคาม</option>
+                            <option value="มุกดาหาร">มุกดาหาร</option>
+                            <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                            <option value="ยโสธร">ยโสธร</option>
+                            <option value="ยะลา">ยะลา</option>
+                            <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+                            <option value="ระนอง">ระนอง</option>
+                            <option value="ระยอง">ระยอง</option>
+                            <option value="ราชบุรี">ราชบุรี</option>
+                            <option value="ลพบุรี">ลพบุรี</option>
+                            <option value="ลำปาง">ลำปาง</option>
+                            <option value="ลำพูน">ลำพูน</option>
+                            <option value="เลย">เลย</option>
+                            <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+                            <option value="สกลนคร">สกลนคร</option>
+                            <option value="สงขลา">สงขลา</option>
+                            <option value="สตูล">สตูล</option>
+                            <option value="สมุทรปราการ">สมุทรปราการ</option>
+                            <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                            <option value="สมุทรสาคร">สมุทรสาคร</option>
+                            <option value="สระแก้ว">สระแก้ว</option>
+                            <option value="สระบุรี">สระบุรี</option>
+                            <option value="สิงห์บุรี">สิงห์บุรี</option>
+                            <option value="สุโขทัย">สุโขทัย</option>
+                            <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+                            <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                            <option value="สุรินทร์">สุรินทร์</option>
+                            <option value="หนองคาย">หนองคาย</option>
+                            <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+                            <option value="อ่างทอง">อ่างทอง</option>
+                            <option value="อุดรธานี">อุดรธานี</option>
+                            <option value="อุทัยธานี">อุทัยธานี</option>
+                            <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                            <option value="อุบลราชธานี">อุบลราชธานี</option>
+                            <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="card field-vehicle" id="field-vehicle02">
+                    <div class="vehicle-type"></div>
+                    <h2 data-lang="header-vehicle02">ยานพาหนะ #2</h2>
+                    <label id="field-lp-no">
+                        <span data-lang="lp-no">เลขป้ายทะเบียน</span>
+                        <input type="text" name="vehicles[1][lp-no]" id="lp-no-1" placeholder="ทท 8888 / ททท 888">
+                    </label>
+                    <label id="field-lp-province">
+                        <span data-lang="lp-province">จังหวัดจดทะเบียน</span>
+                        <select name="vehicles[1][lp-province]" id="lp-province-1">
+                            <option value="" data-lang="option-province">-- เลือกจังหวัด --</option>
+                            <option value="กระบี่">กระบี่</option>
+                            <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                            <option value="กาญจนบุรี">กาญจนบุรี</option>
+                            <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+                            <option value="กำแพงเพชร">กำแพงเพชร</option>
+                            <option value="ขอนแก่น">ขอนแก่น</option>
+                            <option value="จันทบุรี">จันทบุรี</option>
+                            <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+                            <option value="ชลบุรี">ชลบุรี</option>
+                            <option value="ชัยนาท">ชัยนาท</option>
+                            <option value="ชัยภูมิ">ชัยภูมิ</option>
+                            <option value="ชุมพร">ชุมพร</option>
+                            <option value="เชียงราย">เชียงราย</option>
+                            <option value="เชียงใหม่">เชียงใหม่</option>
+                            <option value="ตรัง">ตรัง</option>
+                            <option value="ตราด">ตราด</option>
+                            <option value="ตาก">ตาก</option>
+                            <option value="นครนายก">นครนายก</option>
+                            <option value="นครปฐม">นครปฐม</option>
+                            <option value="นครพนม">นครพนม</option>
+                            <option value="นครราชสีมา">นครราชสีมา</option>
+                            <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                            <option value="นครสวรรค์">นครสวรรค์</option>
+                            <option value="นนทบุรี">นนทบุรี</option>
+                            <option value="นราธิวาส">นราธิวาส</option>
+                            <option value="น่าน">น่าน</option>
+                            <option value="บึงกาฬ">บึงกาฬ</option>
+                            <option value="บุรีรัมย์">บุรีรัมย์</option>
+                            <option value="ปทุมธานี">ปทุมธานี</option>
+                            <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+                            <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+                            <option value="ปัตตานี">ปัตตานี</option>
+                            <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+                            <option value="พังงา">พังงา</option>
+                            <option value="พัทลุง">พัทลุง</option>
+                            <option value="พิจิตร">พิจิตร</option>
+                            <option value="พิษณุโลก">พิษณุโลก</option>
+                            <option value="เพชรบุรี">เพชรบุรี</option>
+                            <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+                            <option value="แพร่">แพร่</option>
+                            <option value="พะเยา">พะเยา</option>
+                            <option value="ภูเก็ต">ภูเก็ต</option>
+                            <option value="มหาสารคาม">มหาสารคาม</option>
+                            <option value="มุกดาหาร">มุกดาหาร</option>
+                            <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                            <option value="ยโสธร">ยโสธร</option>
+                            <option value="ยะลา">ยะลา</option>
+                            <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+                            <option value="ระนอง">ระนอง</option>
+                            <option value="ระยอง">ระยอง</option>
+                            <option value="ราชบุรี">ราชบุรี</option>
+                            <option value="ลพบุรี">ลพบุรี</option>
+                            <option value="ลำปาง">ลำปาง</option>
+                            <option value="ลำพูน">ลำพูน</option>
+                            <option value="เลย">เลย</option>
+                            <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+                            <option value="สกลนคร">สกลนคร</option>
+                            <option value="สงขลา">สงขลา</option>
+                            <option value="สตูล">สตูล</option>
+                            <option value="สมุทรปราการ">สมุทรปราการ</option>
+                            <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                            <option value="สมุทรสาคร">สมุทรสาคร</option>
+                            <option value="สระแก้ว">สระแก้ว</option>
+                            <option value="สระบุรี">สระบุรี</option>
+                            <option value="สิงห์บุรี">สิงห์บุรี</option>
+                            <option value="สุโขทัย">สุโขทัย</option>
+                            <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+                            <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                            <option value="สุรินทร์">สุรินทร์</option>
+                            <option value="หนองคาย">หนองคาย</option>
+                            <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+                            <option value="อ่างทอง">อ่างทอง</option>
+                            <option value="อุดรธานี">อุดรธานี</option>
+                            <option value="อุทัยธานี">อุทัยธานี</option>
+                            <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                            <option value="อุบลราชธานี">อุบลราชธานี</option>
+                            <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+                        </select>
+                    </label>
+                </div>
+
+                <h2 data-lang="header03">ข้อมูลเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</h2>
+                <label id="field-owner-zone">
+                    <span data-lang="owner-zone">อาคาร/โซนจอด</span>
+                    <select name="owner-zone" id="owner-zone">
+                        <option value="" data-lang="option">-- เลือกประเภท --</option>
+                        <option value="BLD_A" data-lang="option-value.owner-zone.BLD_A">อาคาร A</option>
+                        <option value="BLD_B" data-lang="option-value.owner-zone.BLD_B">อาคาร B</option>
+                        <option value="BLD_C" data-lang="option-value.owner-zone.BLD_C">อาคาร C</option>
+                    </select>
+                </label>
+                <label id="field-owner-unit">
+                    <span data-lang="owner-unit">เลขที่ห้องชุด</span>
+                    <input type="text" name="owner-unit" id="owner-unit" placeholder="88/888">
+                </label>
+                <label id="field-owner-name">
+                    <span data-lang="owner-name">ชื่อเจ้าของร่วม/ผู้เช่า/ผู้ใช้สิทธิ์</span>
+                    <input type="text" name="owner-name" id="owner-name" placeholder="ชื่อ นามสกุล">
+                </label>
+
+                <label id="field-owner-phone">
+                    <span data-lang="owner-phone">หมายเลขโทรศัพท์</span>
+                    <input type="tel" name="owner-phone" id="owner-phone" pattern="0[0-9]{9}" placeholder="0123456789">
+                </label>
+
+
+                <button type="submit" data-lang="btn-regist">ลงทะเบียนสติกเกอร์</button>
+            </form>
+        </div>
+
+        <div class="footer">
+
+            <div class="caution" data-lang="caution">
+                หากต้องการแก้ไข/เปลี่ยนข้อมูลยานพาหนะ<br />กรุณาติดต่อสำนักงานนิติบุคคล
+            </div>
+
+            <div class="disclaimer" data-lang="disclaimer">
+                <div>นิติบุคคลอาคารชุดเมโทรลักซ์-เกษตร<br />39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br /> กรุงเทพมหานคร 10900</div>
+            </div>
+            <div class="notice" data-lang="notice">
+                สติกเกอร์จอดรถเป็นทรัพย์สินของนิติบุคคลอาคารชุด ใช้เพื่อระบุตัวตนของผู้ได้รับสิทธิตามระเบียบนิติบุคคลเท่านั้น ผู้ครอบครองไม่มีสิทธิเป็นเจ้าของ ห้ามโอน ขาย หรือใช้ในวัตถุประสงค์อื่น นิติบุคคลขอสงวนสิทธิเรียกคืนหรือเพิกถอนการใช้ได้ทันที หากผู้ครอบครองสิ้นสิทธิหรือฝ่าฝืนข้อกำหนด
+            </div>
+
+
+
+            <div class="version" data-lang="version"> ParkQR Viewer (version 1.2)</div>
+        </div>
+    </div>
+    
+    <script src="resource/js/main.min.js?v=20251114"></script>
+
+    
+
+</body>
+</html>
