@@ -15,7 +15,7 @@ function NS(ns, name, fn, root = globalThis) {
     return el[name];
 }
 
-var App = App || {};
+var App = App || {};                                                         
 //-----
 const NAMESPACE = 'App.Class.Module';
 const NAMECLASS = 'Main';

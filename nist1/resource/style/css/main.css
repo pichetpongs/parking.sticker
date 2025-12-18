@@ -323,6 +323,9 @@ body div#frm-regist.vehicle-type-car div.field-vehicle {
 body div#frm-regist.vehicle-type-car div.field-vehicle div {
   background-image: url("../image/vehicle-type-car06.png");
 }
+body div#frm-regist.vehicle-type-car div.field-vehicle:nth-of-type(2) {
+  display: none;
+}
 body div#frm-regist.vehicle-type-car div.field-vehicle:nth-of-type(2) div {
   background-image: url("../image/vehicle-type-car02.png");
 }
