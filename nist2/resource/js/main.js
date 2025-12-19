@@ -878,7 +878,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
                     me.display_error(I18N.get_text("message.data-operate.regist-cmp"), "message.data-operate.regist-cmp");
 
-                    res.data["is_regist"]
+                    res.data["is-regist"]
                         ? me.render_info(res.data, true)
                         : me.render_form(res.data);
 
