@@ -628,7 +628,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             cpf.owner_unit.required = is_enable;
             cpf.owner_name.required = is_enable
             cpf.owner_phone.required = is_enable
-            cpf.owner_zone.required = is_enable
+            //cpf.owner_zone.required = is_enable
 
             cpf.self.style.display = "block";
             cp.container.classList.remove("loader");
