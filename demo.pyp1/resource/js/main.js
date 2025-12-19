@@ -33,7 +33,7 @@ const TTLStore = (() => {
 
             return rec.value;
 
-        } catch {   // ข้อมูลพัง—เคลียร์ทิ้ง
+        } catch(e) {   // ข้อมูลพัง—เคลียร์ทิ้ง
             localStorage.removeItem(NS + key);
             return null;
         }
@@ -53,7 +53,7 @@ const TTLStore = (() => {
             try {
                 const rec = JSON.parse(localStorage.getItem(k));
                 if (rec?.expiresAt && now() > rec.expiresAt) {  localStorage.removeItem(k); }
-            } catch {
+            } catch(e) {
                 localStorage.removeItem(k);
             }
         }

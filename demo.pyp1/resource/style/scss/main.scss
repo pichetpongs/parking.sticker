@@ -227,7 +227,6 @@ body{
     }
 
 
-
     div#frm-regist{ 
         display:none;
         div.field-vehicle{
@@ -295,22 +294,22 @@ body{
             padding:10px 0px;
         }
         div.disclaimer {
-            text-align: center;
+            text-align: inherit;
             padding: 5px 10px;
             color: #95a5a6;
             font-size: 14px;
         }
         div.notice{
+            text-align: inherit;
             margin:10px 0px;
-            
-            text-align:center;
             font-size: 12px;
             color: #95a5a6;
         }
         div.version{
+            text-align: inherit;
             color: #95a5a6;
             margin: 12px 0px;
-           font-size: 13px;
+            font-size: 13px;
         }
 
     }
