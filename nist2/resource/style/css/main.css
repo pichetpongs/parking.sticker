@@ -2,8 +2,8 @@
   font-family: "Noto Sans Thai", sans-serif;
   margin: 0;
   padding: 0;
-  background: #f6f6f6;
-  color: #0F3D3E;
+  background: #E6F2EF;
+  color: #2E2E2E;
   font-size: 18px;
 }
 body h1, body h2 {
@@ -21,8 +21,8 @@ body h2 {
 }
 body button, body .button {
   font-family: inherit;
-  color: rgb(246.3350515464, 238.5154639175, 222.6649484536);
-  background-color: #D6B166;
+  color: rgb(194.6802325581, 232.3197674419, 224.5988372093);
+  background-color: #2F7D6D;
   border: none;
   padding: 8px 8px;
   box-sizing: border-box;
@@ -33,8 +33,8 @@ body button, body .button {
   width: 100%;
 }
 body button:hover, body .button:hover {
-  background-color: rgb(219.3891752577, 187.2525773196, 122.1108247423);
-  color: white;
+  background-color: rgb(53.9680232558, 143.5319767442, 125.1598837209);
+  color: rgb(157.6162790698, 218.3837209302, 205.9186046512);
 }
 
 body #container {
@@ -74,6 +74,10 @@ body.lang-en div.footer div.notice {
 body.lang-en div.footer div.disclaimer {
   font-size: 13px;
 }
+body.expire div.item .value.expired {
+  animation: expirePulse 1.8s ease-in-out infinite;
+  color: #b33939 !important;
+}
 body form label {
   display: block;
   margin-top: 8px;
@@ -89,15 +93,15 @@ body form input, body form select {
   padding: 10px;
   margin-top: 2px;
   border-radius: 10px;
-  border: 1px solid rgb(220.5, 220.5, 220.5);
+  border: 1px solid rgb(196.4473684211, 224.5526315789, 217.5263157895);
   box-sizing: border-box;
   position: relative;
   opacity: 80%;
   z-index: 5;
 }
 body form input:focus-visible, body form input:focus, body form select:focus-visible, body form select:focus {
-  border: 1px solid #D6B166;
-  outline: 1px solid #D6B166;
+  border: 1px solid #2F7D6D;
+  outline: 1px solid #2F7D6D;
 }
 body form .card {
   border: 1px solid #ccc;
@@ -127,7 +131,7 @@ body label.sw-lang .sw-lang-input {
 body label.sw-lang .sw-lang-track {
   width: var(--w);
   height: var(--h);
-  background: #f6f6f6;
+  background: #E6F2EF;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.03);
   border-radius: calc(var(--h) / 2);
   padding: 3px;
@@ -147,10 +151,10 @@ body label.sw-lang .sw-lang-knob {
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #0F3D3E;
+  color: #2E2E2E;
 }
 body label.sw-lang .sw-lang-input:checked + .sw-lang-track {
-  background: rgba(214, 177, 102, 0.3);
+  background: rgba(47, 125, 109, 0.3);
 }
 body label.sw-lang .sw-lang-input:checked + .sw-lang-track .sw-lang-knob {
   transform: translateX(28px);
@@ -200,7 +204,7 @@ body div.info div.item {
 body div.info div.item .label {
   font-weight: 600;
   line-height: inherit;
-  color: #0F3D3E;
+  color: #2E2E2E;
 }
 body div.info div.item .value {
   text-align: right;
@@ -213,7 +217,7 @@ body div.info div.item .value a {
   color: white;
 }
 body div.info div.item .value.phone {
-  background-color: #D6B166;
+  background-color: #2F7D6D;
 }
 body div.info div.item .value.phone a {
   padding-left: 30px;
@@ -224,11 +228,11 @@ body div.info div.item .value.phone a {
   border-radius: 10px;
 }
 body div.info div.item .value.phone:hover {
-  background-color: rgb(219.3891752577, 187.2525773196, 122.1108247423);
+  background-color: rgb(53.9680232558, 143.5319767442, 125.1598837209);
 }
 body div.info div.item .value.expired {
   font-weight: 600;
-  color: #b33939;
+  color: #C98A00;
 }
 body div.info div.item.remark {
   text-align: left;
@@ -358,7 +362,7 @@ body div.footer div.caution {
   padding: 10px 10px;
   margin-bottom: 5px;
   color: #b33939;
-  border: solid #D6B166 1px;
+  border: solid #2F7D6D 1px;
   border-radius: 10px;
 }
 body div.footer div.disclaimer {
@@ -378,4 +382,16 @@ body div.footer div.version {
   color: rgb(97.2153846154, 114.6923076923, 115.7846153846);
   margin: 12px 0px;
   font-size: 13px;
+}
+
+@keyframes expirePulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -1,10 +1,11 @@
 ﻿
-$color-body:#f6f6f6;
-$color-text:#0F3D3E;
+$color-body:#E6F2EF;
+$color-text:#2E2E2E;
 $color-footer:#95a5a6;
 //-----
-$color-button :#D6B166;
-$color-error  : #b33939;
+$color-button   : #2F7D6D; 
+$color-warning  : #C98A00;
+$color-error    : #b33939;
 
 $fontsize :18px;
 $fontsize-header: 20px;
@@ -30,7 +31,7 @@ body {
 
     button,.button{
         font-family: inherit;
-        color: lighten($color-button,30%);
+        color: lighten($color-button,50%);
         background-color: $color-button;
         //-----
         border: none;
@@ -94,6 +95,12 @@ body {
             div.notice { font-size:11px; line-height:16px;  }
             div.disclaimer{ font-size:13px; }
         }
+    }
+
+    &.expire{
+        div.item{ .value.expired { 
+                      animation: expirePulse 1.8s ease-in-out infinite;
+                      color: $color-error !important; }}           
     }
 
     form {
@@ -285,7 +292,7 @@ body {
 
                 &.expired {
                     font-weight: 600;
-                    color: $color-error;
+                    color: $color-warning;
                 }
             }
 
@@ -474,3 +481,12 @@ body {
         }
     }
 }
+
+
+@keyframes expirePulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+
