@@ -99,7 +99,7 @@ body {
 
     &.expire{
         div.item{ .value.expired { 
-                      animation: expirePulse 1.8s ease-in-out infinite;
+                      animation: expire-soon 1.8s ease-in-out infinite;
                       color: $color-error !important; }}           
     }
 
@@ -483,7 +483,7 @@ body {
 }
 
 
-@keyframes expirePulse {
+@keyframes expire-soon {
   0%   { opacity: 1; }
   50%  { opacity: 0.2; }
   100% { opacity: 1; }

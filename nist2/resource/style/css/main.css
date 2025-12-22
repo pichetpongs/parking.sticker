@@ -75,7 +75,7 @@ body.lang-en div.footer div.disclaimer {
   font-size: 13px;
 }
 body.expire div.item .value.expired {
-  animation: expirePulse 1.8s ease-in-out infinite;
+  animation: expire-soon 1.8s ease-in-out infinite;
   color: #b33939 !important;
 }
 body form label {
@@ -384,7 +384,7 @@ body div.footer div.version {
   font-size: 13px;
 }
 
-@keyframes expirePulse {
+@keyframes expire-soon {
   0% {
     opacity: 1;
   }
