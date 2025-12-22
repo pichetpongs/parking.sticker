@@ -24,7 +24,7 @@ const INSTANCE  = 'Viewer';
 
 NS(NAMESPACE, NAMECLASS, (() => {
 
-    const VERSION     = "2.0.4";
+    const VERSION     = "2.0.5";
     const CODE_CLIENT = "nist1"; //กำหนดรหัสของ client 
 
     const API_ACTION = {
@@ -548,6 +548,12 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             cp.caution.style.display = "block";
 
+            let date_current = new Date();
+            let date_expire = new Date(data["date-expire"]);
+            let is_expire = date_current.getMonth() === date_expire.getMonth() && date_current.getFullYear() === date_expire.getFullYear();
+            //-----
+            is_expire ? cp.body.classList.add("expire") : cp.body.classList.remove("expire");
+
             this.display_error();
             
         },
@@ -903,6 +909,9 @@ NS("App.Module", INSTANCE, new (NS(NAMESPACE, NAMECLASS))());
 
 /**
  * HISTORY
+ * 
+ * 20251222:2.0.5
+ * - Added : เพิ่มการตรวจสอบวันหมดอายุ ถ้าอยู่ในเดือนเดียวกัน ให้ เพิ่มคลาส body.expire
  * 
  * 20251114:2.0.4
  * - Moded : แก้ไขเวลาของ localstorage:key เป็น 4 ชั่วโมง
