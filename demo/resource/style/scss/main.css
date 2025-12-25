@@ -332,11 +332,11 @@ body div#frm-regist.vehicle-type-car div.field-vehicle:nth-of-type(2) div {
 body div#frm-regist.vehicle-type-bike div.field-vehicle {
   display: block;
 }
-body div#frm-regist.vehicle-type-bike div.field-vehicle:nth-of-type(2) {
-  display: none;
-}
 body div#frm-regist.vehicle-type-bike div.field-vehicle div {
   background-image: url("../image/vehicle-type-bike01.png");
+}
+body div#frm-regist.vehicle-type-bike div.field-vehicle:nth-of-type(2) {
+  display: none;
 }
 body div.footer {
   position: absolute;
