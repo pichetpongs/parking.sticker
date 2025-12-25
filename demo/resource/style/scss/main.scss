@@ -398,6 +398,7 @@ body {
                 }
 
                 &:nth-of-type(2) {
+                    display:none;
                     div {
                         background-image: url('../image/vehicle-type-car02.png');
                     }

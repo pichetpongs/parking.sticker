@@ -73,7 +73,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
         },
 
         "en-EN": {
-            "title": "ParkQR Viewer - METROLUXE Kaset Condominium",
+            "title": "ParkQR Viewer - BANGKOK Condominium",
             "version": `ParkQR Viewer (version ${VERSION})`,
             "header01": "Parking Permit Holder Information",
             "header02": "New registration",
@@ -101,7 +101,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             //-----
             "caution": "If you need to update or change parking permit information,<br>please contact the juristic person office.",
-            "disclaimer": "METROLUXE Kaset Condominium<br>Juristic Person Office<br>39 Phahonyothin, Sena Nikhom Subdistrict,<br>Chatuchak District, Bangkok 10900",
+            "disclaimer": "BANGKOK Condominium<br>Juristic Person Office<br>0XX Phahonyothin, Sena Nikhom Subdistrict,<br>Chatuchak District, Bangkok 10900",
             "notice": "The parking sticker is the property of the condominium juristic person.It is issued solely for the purpose of identifying authorized users in accordance with the condominium’s regulations. The holder does not possess ownership rights over the sticker. Transfer, sale, or use for any other purpose is strictly prohibited.The juristic person reserves the right to revoke or withdraw the sticker immediately in the event that the holder’s rights are terminated or any regulations are violated.",
             "lost": {
                 "text": "This sticker has been reported lost.<br>Possession or use is prohibited.<br>Please return it to the Juristic Person Office immediately.",
@@ -134,7 +134,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             }
         },
         "th-TH": {
-            "title": "ParkQR Viewer - อาคารชุดเมโทรสักซ์-เกษตร",
+            "title": "ParkQR Viewer - อาคารชุด บางกอก คอนโดมิเนียม",
             "version": `ParkQR Viewer (เวอร์ชัน ${VERSION})`,
             "header01": "ข้อมูลผู้ใช้สิทธิ์จอดยานพาหนะ",
             "header02": "ลงทะเบียนสติกเกอร์ใหม่",
@@ -161,7 +161,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             //-----
             "caution": "ต้องการแก้ไขข้อมูลผู้รับสิทธิ์/ข้อมูลยานพาหนะ<br>กรุณาติดต่อสำนักงานนิติบุคคล<br>ในวันและเวลาทำการ",
-            "disclaimer": "นิติบุคคลอาคารชุดเมโทรลักซ์-เกษตร<br>39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br>กรุงเทพมหานคร 10900",    
+            "disclaimer": "นิติบุคคลอาคารชุดบางกอก คอนโดมิเนียม<br>39 ถนนประเสริฐมนูกิจ แขวงเสนานิคม เขตจตุจักร<br>กรุงเทพมหานคร 10900",    
             "notice": "สติกเกอร์จอดรถเป็นทรัพย์สินของนิติบุคคลอาคารชุด ใช้เพื่อระบุตัวตนของผู้ได้รับสิทธิตามระเบียบนิติบุคคลเท่านั้น ผู้ครอบครองไม่มีสิทธิเป็นเจ้าของ ห้ามโอน ขาย หรือใช้ในวัตถุประสงค์อื่น นิติบุคคลขอสงวนสิทธิเรียกคืนหรือเพิกถอนการใช้ได้ทันที หากผู้ครอบครองสิ้นสิทธิหรือฝ่าฝืนข้อกำหนด",
             //-----
             "lost": {
