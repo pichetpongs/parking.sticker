@@ -24,7 +24,7 @@ const INSTANCE  = 'Viewer';
 
 NS(NAMESPACE, NAMECLASS, (() => {
 
-    const VERSION     = "2.0.5";
+    const VERSION     = "2.0.6";
     const CODE_CLIENT = "nist1"; //กำหนดรหัสของ client 
 
     const API_ACTION = {
@@ -643,6 +643,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             cpf.owner_unit.required = is_enable;
             cpf.owner_name.required = is_enable
             cpf.owner_phone.required = is_enable
+            cpf.owner_type.required = is_enable
             //cpf.owner_zone.required = is_enable
 
             cpf.self.style.display = "block";
@@ -918,6 +919,9 @@ NS("App.Module", INSTANCE, new (NS(NAMESPACE, NAMECLASS))());
 
 /**
  * HISTORY
+ * 
+ * 20260109:2.0.6
+ * - Added : เพิ่มฟิลด์ข้อมูล owner-type เก็บข้อมูลประเภทผู้ใช้สิทธิ์
  * 
  * 20251222:2.0.5
  * - Added : เพิ่มการตรวจสอบวันหมดอายุ ถ้าอยู่ในเดือนเดียวกัน ให้ เพิ่มคลาส body.expire
