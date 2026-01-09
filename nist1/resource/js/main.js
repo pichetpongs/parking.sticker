@@ -292,6 +292,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
                 permit_qr: "input.permit-qr",
                 vehicle_type: "select#vehicle-type",
                 owner_unit: "input#owner-unit",
+                owner_type: "select#owner-type",
                 owner_zone: "select#owner-zone",
                 owner_name: "input#owner-name",
                 owner_phone: "input#owner-phone",
@@ -512,6 +513,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
                 ${render_item("ประเภท", I18N.get_text("option-value.vehicle-type." + data["vehicle-type"]),
                         "label-type", "option-value.vehicle-type."+ data["vehicle-type"])}
 
+                ${render_item("ประเภทผู้ใช้สิทธิ์", I18N[I18N_CODE]["option-value"]["owner-type"][data["owner-type"]], "owner-type")}
                 ${render_item("อาคาร/โซนจอดฯ", I18N[I18N_CODE]["option-value"]["owner-zone"][data["owner-zone"]], "owner-zone")}
 
                 ${render_item("เลขที่ห้องชุด", data["owner-unit"], "owner-unit")}
