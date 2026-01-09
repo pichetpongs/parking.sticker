@@ -131,6 +131,10 @@ NS(NAMESPACE, NAMECLASS, (() => {
                     BLD_A: "Building A",
                     BLD_B: "Building B",
                     BLD_C: "Building C",
+                },
+                "owner-type": {
+                    OWNER: "Owner",
+                    TENANT: "Tenant",
                 }
             }
         },
