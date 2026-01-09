@@ -85,6 +85,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             "label-no": "Sticker No.",
             "label-type": "Sticker type",
             "owner-zone": "Parking zone",
+            "owner-type": "Owner type",
             "owner-unit": "Unit no.",
             "owner-name": "Owner’s name",
             "owner-phone": "Phone number",
@@ -146,6 +147,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             "label-no": "ลำดับสติกเกอร์",
             "label-type": "ประเภทสติกเกอร์",
             "owner-zone": "อาคาร/โซนจอด",
+            "owner-type": "ประเภทผู้ใช้สิทธิ์",
             "owner-unit": "เลขที่ห้องชุด",
             "owner-name": "ชื่อเจ้าของร่วม",
             "owner-phone": "หมายเลขโทรศัพท์",
@@ -193,7 +195,12 @@ NS(NAMESPACE, NAMECLASS, (() => {
                     BLD_A: "อาคาร A",
                     BLD_B: "อาคาร B",
                     BLD_C: "อาคาร C",
+                },
+                "owner-type": {
+                    OWNER: "เจ้าของร่วม",
+                    TENANT: "ผู้เช่า",
                 }
+
             }
         }
     }
