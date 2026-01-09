@@ -24,7 +24,7 @@ const INSTANCE  = 'Viewer';
 
 NS(NAMESPACE, NAMECLASS, (() => {
 
-    const VERSION     = "2.0.5";
+    const VERSION     = "2.0.6";
     const CODE_CLIENT = "nist2"; //กำหนดรหัสของ client 
 
     const API_ACTION = {
@@ -84,6 +84,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             "permit-qr": "QR Code",
             "label-no": "Sticker No.",
             "label-type": "Sticker type",
+            "owner-type": "Owner type",
             "owner-zone": "Parking zone",
             "owner-unit": "Unit no.",
             "owner-name": "Owner’s name",
@@ -130,6 +131,10 @@ NS(NAMESPACE, NAMECLASS, (() => {
                     BLD_A: "Building A",
                     BLD_B: "Building B",
                     BLD_C: "Building C",
+                },
+                "owner-type": {
+                    OWNER: "Owner",
+                    TENANT: "Tenant",
                 }
             }
         },
@@ -145,6 +150,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             "permit-qr": "รหัสคิวอาร์",
             "label-no": "ลำดับสติกเกอร์",
             "label-type": "ประเภทสติกเกอร์",
+            "owner-type": "ประเภทผู้ใช้สิทธิ์",
             "owner-zone": "อาคาร/โซนจอด",
             "owner-unit": "เลขที่ห้องชุด",
             "owner-name": "ชื่อเจ้าของร่วม",
@@ -193,6 +199,10 @@ NS(NAMESPACE, NAMECLASS, (() => {
                     BLD_A: "อาคาร A",
                     BLD_B: "อาคาร B",
                     BLD_C: "อาคาร C",
+                },
+                "owner-type": {
+                    OWNER: "เจ้าของร่วม",
+                    TENANT: "ผู้เช่า",
                 }
             }
         }
@@ -284,6 +294,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
                 label_no: "input#label-no",
                 permit_qr: "input.permit-qr",
                 vehicle_type: "select#vehicle-type",
+                owner_type: "select#owner-type",
                 owner_unit: "input#owner-unit",
                 owner_zone: "select#owner-zone",
                 owner_name: "input#owner-name",
@@ -504,6 +515,9 @@ NS(NAMESPACE, NAMECLASS, (() => {
                 ${render_item("ประเภท", I18N.get_text("option-value.vehicle-type." + data["vehicle-type"]),
                         "label-type", "option-value.vehicle-type."+ data["vehicle-type"])}
 
+                ${render_item("ประเภทผู้ใช้สิทธิ์", I18N.get_text("option-value.owner-type." + data["owner-type"]),
+                    "owner-type", "option-value.owner-type." + data["owner-type"])}
+
                 ${render_item("อาคาร/โซนจอดฯ", I18N[I18N_CODE]["option-value"]["owner-zone"][data["owner-zone"]], "owner-zone")}
 
                 ${render_item("เลขที่ห้องชุด", data["owner-unit"], "owner-unit")}
@@ -615,6 +629,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             cpf.permit_qr.value = PARAM_PERMIT_QR;
             //----
+            cpf.owner_type.value = data["owner-type"] || '';
             cpf.owner_zone.value = data["owner-zone"] || '';
             cpf.owner_unit.value = data["owner-unit"] || '';
             cpf.owner_name.value = data["owner-name"] || '';
@@ -633,6 +648,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             cpf.owner_unit.required = is_enable;
             cpf.owner_name.required = is_enable
             cpf.owner_phone.required = is_enable
+            cpf.owner_type.required = is_enable
             //cpf.owner_zone.required = is_enable
 
             cpf.self.style.display = "block";
@@ -908,6 +924,9 @@ NS("App.Module", INSTANCE, new (NS(NAMESPACE, NAMECLASS))());
 
 /**
  * HISTORY
+ * 
+ * 20260109:2.0.6
+ * - Added : เพิ่มฟิลด์ข้อมูล owner-type เก็บข้อมูลประเภทผู้ใช้สิทธิ์
  * 
  * 20251222:2.0.5
  * - Added : เพิ่มการตรวจสอบวันหมดอายุ ถ้าอยู่ในเดือนเดียวกัน ให้ เพิ่มคลาส body.expire

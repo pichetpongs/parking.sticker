@@ -517,7 +517,9 @@ NS(NAMESPACE, NAMECLASS, (() => {
                 ${render_item("ประเภท", I18N.get_text("option-value.vehicle-type." + data["vehicle-type"]),
                         "label-type", "option-value.vehicle-type."+ data["vehicle-type"])}
 
-                ${render_item("ประเภทผู้ใช้สิทธิ์", I18N[I18N_CODE]["option-value"]["owner-type"][data["owner-type"]], "owner-type")}
+                ${render_item("ประเภทผู้ใช้สิทธิ์", I18N.get_text("option-value.owner-type." + data["owner-type"]),
+                     "owner-type", "option-value.owner-type." + data["owner-type"])}
+
                 ${render_item("อาคาร/โซนจอดฯ", I18N[I18N_CODE]["option-value"]["owner-zone"][data["owner-zone"]], "owner-zone")}
 
                 ${render_item("เลขที่ห้องชุด", data["owner-unit"], "owner-unit")}
@@ -629,6 +631,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
 
             cpf.permit_qr.value = PARAM_PERMIT_QR;
             //----
+            cpf.owner_type.value = data["owner-type"] || '';
             cpf.owner_zone.value = data["owner-zone"] || '';
             cpf.owner_unit.value = data["owner-unit"] || '';
             cpf.owner_name.value = data["owner-name"] || '';
@@ -637,7 +640,7 @@ NS(NAMESPACE, NAMECLASS, (() => {
             //-----
             cpf.vehicle_type.required = true;
             cpf.label_no.required = true;
-        
+
             let is_enable = data["label-no"] != "" && data["vehicle-type"] != "";
 
             cpf.label_no.disabled = is_enable;
